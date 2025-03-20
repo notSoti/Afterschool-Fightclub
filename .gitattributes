@@ -1,0 +1,16 @@
+*.psd filter=lfs diff=lfs merge=lfs -text
+
+
+# Ensure Unity text files use LF endings
+
+
+*.cs text eol=lf
+
+
+*.prefab text eol=lf
+
+
+*.unity text eol=lf
+
+
+*.txt text eol=lf
