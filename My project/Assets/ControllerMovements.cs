@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class ControllerMovements : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 5f;
+    public float moveSpeed = 7f; // Speed of the character
+    public float jumpForce = 7f; // Jump force of the character
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -19,13 +17,37 @@ public class ControllerMovements : MonoBehaviour
     {
         // Horizontal movement
         float moveHorizontal = Input.GetAxis("Horizontal");
+        rb.freezeRotation = true; // This line prevents tipping over
         rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rb.linearVelocity.y);
 
-        // Jump
-        if ((Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetAxis("Vertical") > 0.5f) && isGrounded)
+        // Flip the character based on movement direction
+        if (moveHorizontal > 0.1f)
         {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Facing right
+        }
+        else if (moveHorizontal < -0.1f)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Facing left
+        }
+
+        // Jump with dpad up
+        if (Input.GetAxis("Vertical") > 0.5f && isGrounded)
+        {
+            GetComponent<Animator>().SetTrigger("Jump");
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             isGrounded = false;
+        }
+
+        // Punch with X
+        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        {
+            GetComponent<Animator>().SetTrigger("Punch");
+        }
+
+        // Kick with square
+        if (Input.GetKeyDown(KeyCode.JoystickButton0))
+        {
+            GetComponent<Animator>().SetTrigger("Kick");
         }
     }
 
