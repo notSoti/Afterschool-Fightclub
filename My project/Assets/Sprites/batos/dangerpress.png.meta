@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dangerpress_0: -2880892453448996202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
