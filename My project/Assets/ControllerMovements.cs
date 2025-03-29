@@ -22,7 +22,7 @@ public class ControllerMovements : MonoBehaviour
         rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rb.linearVelocity.y);
 
         // Jump
-        if (Input.GetKeyDown(KeyCode.JoystickButton1) && isGrounded)
+        if ((Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetAxis("Vertical") > 0.5f) && isGrounded)
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             isGrounded = false;
