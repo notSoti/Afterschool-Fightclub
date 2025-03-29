@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 56460675}
   - component: {fileID: 56460676}
   m_Layer: 3
-  m_Name: etuerty_0
+  m_Name: background1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156303451}
   - component: {fileID: 156303450}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 1322354986}
   m_Layer: 6
   m_Name: fighter2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -883,7 +883,7 @@ MonoBehaviour:
   target: {fileID: 1161587118}
   background: {fileID: 56460673}
   smoothSpeed: 5
-  orthographicSize: 3
+  orthographicSize: 5
 --- !u!1 &1972607177
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,7 +901,7 @@ GameObject:
   - component: {fileID: 1972607184}
   m_Layer: 6
   m_Name: fighter1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -986,7 +986,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972607177}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce90ac26c1ccf2a40873651b40608666, type: 3}
   m_Name: 
@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972607177}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 513313f297edd454d9df34e51e054b91, type: 3}
   m_Name: 
