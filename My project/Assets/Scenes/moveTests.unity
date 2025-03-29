@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 156303450}
   m_Layer: 3
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,14 +488,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1322354992}
   - component: {fileID: 1322354991}
-  - component: {fileID: 1322354990}
   - component: {fileID: 1322354989}
   - component: {fileID: 1322354988}
   - component: {fileID: 1322354987}
   - component: {fileID: 1322354986}
   m_Layer: 6
   m_Name: fighter2
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -507,7 +506,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322354985}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 513313f297edd454d9df34e51e054b91, type: 3}
   m_Name: 
@@ -609,24 +608,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1322354990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322354985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce90ac26c1ccf2a40873651b40608666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 10
-  jumpForce: 10
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!212 &1322354991
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -894,14 +875,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1972607182}
   - component: {fileID: 1972607181}
-  - component: {fileID: 1972607180}
   - component: {fileID: 1972607179}
   - component: {fileID: 1972607178}
   - component: {fileID: 1972607183}
   - component: {fileID: 1972607184}
   m_Layer: 6
   m_Name: fighter1
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -979,24 +959,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1972607180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972607177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce90ac26c1ccf2a40873651b40608666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 10
-  jumpForce: 10
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!212 &1972607181
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1096,7 +1058,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972607177}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 513313f297edd454d9df34e51e054b91, type: 3}
   m_Name: 
