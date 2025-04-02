@@ -21,10 +21,10 @@ public class NewBehaviourScript : MonoBehaviour
         Character player = Character.Kagkur;
     }
 
-    public Character getP1() {
+    public Character GetP1() {
         return player;
     }
-    public void setP1(Character newcharacter) {
+    public void SetP1(Character newcharacter) {
         player = newcharacter;
     }
 
