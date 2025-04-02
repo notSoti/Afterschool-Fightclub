@@ -31,7 +31,7 @@ public class ControllerMovements : MonoBehaviour
         }
 
         // Jump with dpad up
-        if (Input.GetAxis("Vertical") > 0.5f && isGrounded)
+        if ((Input.GetAxis("Vertical") > 0.5f || Input.GetKey(KeyCode.Space)) && isGrounded)
         {
             GetComponent<Animator>().SetTrigger("Jump");
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
@@ -39,13 +39,13 @@ public class ControllerMovements : MonoBehaviour
         }
 
         // Punch with X
-        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.E))
         {
             GetComponent<Animator>().SetTrigger("Punch");
         }
 
         // Kick with square
-        if (Input.GetKeyDown(KeyCode.JoystickButton0))
+        if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Q))
         {
             GetComponent<Animator>().SetTrigger("Kick");
         }
