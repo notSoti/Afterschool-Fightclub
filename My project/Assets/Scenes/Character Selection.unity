@@ -148,10 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2a2f389eadc1e4f9d62f58b30c1782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  char1: 0
-  char2: 0
-  char3: 0
-  char4: 0
 --- !u!224 &696503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3015,7 +3011,7 @@ GameObject:
   - component: {fileID: 1757276843}
   - component: {fileID: 1757276842}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Char Selection Backround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4268,10 +4264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2a2f389eadc1e4f9d62f58b30c1782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  char1: 0
-  char2: 0
-  char3: 0
-  char4: 0
 --- !u!1 &2053161713
 GameObject:
   m_ObjectHideFlags: 0
