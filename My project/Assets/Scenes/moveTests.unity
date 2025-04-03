@@ -678,6 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1972607182}
   moveSpeed: 5
+  jumpForce: 7
   attackRange: 1.5
   attackCooldown: 1
 --- !u!1 &1522532158
@@ -1065,6 +1066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513313f297edd454d9df34e51e054b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 7
+  jumpForce: 7
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

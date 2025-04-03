@@ -38,10 +38,10 @@ public class ControllerMovements : MonoBehaviour
             isGrounded = false;
         }
 
-        // Punch with X
+        // Main attack (X)
         if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.E))
         {
-            GetComponent<Animator>().SetTrigger("Punch");
+            GetComponent<Animator>().SetTrigger("Main Attack");
         }
 
         // Kick with square
