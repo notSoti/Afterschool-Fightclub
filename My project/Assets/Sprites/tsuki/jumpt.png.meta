@@ -53,9 +53,6 @@ TextureImporter:
   - first:
       213: -1286038106947435294
     second: jumpt_16
-  - first:
-      213: 5870435472814466197
-    second: jumpt_17
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -123,7 +120,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 3
@@ -374,7 +371,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4597d774c61175448bb411c83323f5b4
+    spriteID: a4359abe997a75b4e8c31857693d058a
     internalID: 0
     vertices: []
     indices: 
