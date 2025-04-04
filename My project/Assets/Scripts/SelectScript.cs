@@ -2,23 +2,27 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public enum Character{Tsuki, Jasmine, Mihu, Kagkur};
-    public Character player = Character.Tsuki; //default option
+    public enum Character { Tsuki, Jasmine, Mihu };
+    public Character player;
 
-    public void SelectChar1() {
-        Character player = Character.Tsuki;
+    void Start() {
+        player = (Character)Random.Range(0, 2); //default option
     }
 
-    public void SelectChar2() {
-        Character player = Character.Jasmine;
+    void SelectChar1() {
+        player = Character.Tsuki;
     }
 
-    public void SelectChar3() {
-        Character player = Character.Mihu;
+    void SelectChar2() {
+        player = Character.Jasmine;
     }
 
-    public void SelectChar4() {
-        Character player = Character.Kagkur;
+    void SelectChar3() {
+        player = Character.Mihu;
+    }
+
+    void SelectChar4() {
+        player = (Character)Random.Range(0, 2);
     }
 
     public Character GetP1() {
