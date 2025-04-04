@@ -1,46 +1,19 @@
 fileFormatVersion: 2
-guid: c4476e44ef76987498b70c133f09ca1d
+guid: 10f6e8f43bd16864e8454304a14e49af
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4386832545063578389
-    second: jumpt_0
+      213: -6732294965104032732
+    second: fall_0
   - first:
-      213: -3417997171124156390
-    second: jumpt_1
+      213: -8269792095265539674
+    second: fall_1
   - first:
-      213: 6471063000913143710
-    second: jumpt_2
+      213: -2808048858112833009
+    second: fall_2
   - first:
-      213: 5862507871000414916
-    second: jumpt_3
-  - first:
-      213: 8067505594868144793
-    second: jumpt_4
-  - first:
-      213: -670741293796533725
-    second: jumpt_5
-  - first:
-      213: 2396565952848135490
-    second: jumpt_6
-  - first:
-      213: 6222119768801554386
-    second: jumpt_7
-  - first:
-      213: -4077524077619804170
-    second: jumpt_8
-  - first:
-      213: 2779891666589108889
-    second: jumpt_9
-  - first:
-      213: 3375811176437616169
-    second: jumpt_10
-  - first:
-      213: -8416317822421502371
-    second: jumpt_11
-  - first:
-      213: 8656103026219484623
-    second: jumpt_12
+      213: -4388410108566013805
+    second: fall_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -136,120 +109,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jumpt_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2048
-        width: 2048
-        height: 2048
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 51b23a115f821ec30800000000000000
-      internalID: 4386832545063578389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jumpt_1
+      name: fall_0
       rect:
         serializedVersion: 2
         x: 2048
-        y: 2048
-        width: 2048
-        height: 2048
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a18cad3aea5d090d0800000000000000
-      internalID: -3417997171124156390
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jumpt_2
-      rect:
-        serializedVersion: 2
-        x: 4096
-        y: 2048
-        width: 2048
-        height: 2048
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e97e990a385ddc950800000000000000
-      internalID: 6471063000913143710
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jumpt_3
-      rect:
-        serializedVersion: 2
-        x: 6144
-        y: 2048
-        width: 2048
-        height: 2048
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ca49e709dfcb5150800000000000000
-      internalID: 5862507871000414916
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jumpt_4
-      rect:
-        serializedVersion: 2
-        x: 8192
-        y: 2048
-        width: 2048
-        height: 2048
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 99a9795589985ff60800000000000000
-      internalID: 8067505594868144793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jumpt_5
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
         width: 2048
         height: 2048
@@ -261,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 32a5217d85c01b6f0800000000000000
-      internalID: -670741293796533725
+      spriteID: 424c2d106651292a0800000000000000
+      internalID: -6732294965104032732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fall_1
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a93d5397ebcb3d80800000000000000
+      internalID: -8269792095265539674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fall_2
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0a4e34f07ec709d0800000000000000
+      internalID: -2808048858112833009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fall_3
+      rect:
+        serializedVersion: 2
+        x: 8192
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 398703ec14c3913c0800000000000000
+      internalID: -4388410108566013805
       vertices: []
       indices: 
       edges: []
@@ -271,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 674ef5509ead4e0469daae2e2a75763d
+    spriteID: d9dd1ebb83cda844c9e67042135176ea
     internalID: 0
     vertices: []
     indices: 
@@ -281,12 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      jumpt_0: 4386832545063578389
-      jumpt_1: -3417997171124156390
-      jumpt_2: 6471063000913143710
-      jumpt_3: 5862507871000414916
-      jumpt_4: 8067505594868144793
-      jumpt_5: -670741293796533725
+      fall_0: -6732294965104032732
+      fall_1: -8269792095265539674
+      fall_2: -2808048858112833009
+      fall_3: -4388410108566013805
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
