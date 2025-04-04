@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e6e0ca97f65bba242840c1a1daae4b41
+guid: aebf5e6723dd7b840a2ec54c4da1362b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6261027919722877304
-    second: p2checktrans_0
+      213: -620613415397419295
+    second: randomchar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: p2checktrans_0
+      name: randomchar_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 200
+        width: 294
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87192eb78b3a3e650800000000000000
-      internalID: 6261027919722877304
+      spriteID: 1e6156803632367f0800000000000000
+      internalID: -620613415397419295
       vertices: []
       indices: 
       edges: []
