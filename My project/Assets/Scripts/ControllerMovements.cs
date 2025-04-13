@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ControllerMovements : MonoBehaviour
 {
-    public float moveSpeed = 7f; // Speed of the character
-    public float jumpForce = 7f; // Jump force of the character
+    public float moveSpeed = 7f;
+    public float jumpForce = 7f;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -15,22 +15,23 @@ public class ControllerMovements : MonoBehaviour
 
     void Update()
     {
-        // Horizontal movement
+        // horizontal movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb.freezeRotation = true; // This line prevents tipping over
         rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rb.linearVelocity.y);
 
-        // Flip the character based on movement direction
+        // flip the character
         if (moveHorizontal > 0.1f)
         {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Facing right
-        }
-        else if (moveHorizontal < -0.1f)
+            // facing left
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        } else if (moveHorizontal < -0.1f)
         {
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z); // Facing left
+            // facing right
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
-        // Jump with dpad up
+        // jump (dpad up)
         if ((Input.GetAxis("Vertical") > 0.5f || Input.GetKey(KeyCode.Space)) && isGrounded)
         {
             GetComponent<Animator>().SetTrigger("Jump");
@@ -38,13 +39,21 @@ public class ControllerMovements : MonoBehaviour
             isGrounded = false;
         }
 
-        // Main attack (X)
+        // crouch
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.JoystickButton2))
+        {
+            GetComponent<Animator>().SetBool("Crouch", true);
+        } else {
+            GetComponent<Animator>().SetBool("Crouch", false);
+        }
+
+        // main attack (X)
         if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.E))
         {
             GetComponent<Animator>().SetTrigger("Main Attack");
         }
 
-        // Kick with square
+        // kick (square)
         if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Q))
         {
             GetComponent<Animator>().SetTrigger("Kick");
