@@ -6,18 +6,21 @@ public class ControllerMovements : MonoBehaviour
     public float jumpForce = 7f;
 
     private Rigidbody2D rb;
+    private Animator animator;
     private bool isGrounded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+
         // horizontal movement
         float moveHorizontal = Input.GetAxis("Horizontal");
-        rb.freezeRotation = true; // This line prevents tipping over
+        rb.freezeRotation = true; // this line prevents tipping over
         rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rb.linearVelocity.y);
 
         // flip the character
@@ -25,8 +28,7 @@ public class ControllerMovements : MonoBehaviour
         {
             // facing left
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        } else if (moveHorizontal < -0.1f)
-        {
+        } else if (moveHorizontal < -0.1f) {
             // facing right
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
@@ -34,29 +36,33 @@ public class ControllerMovements : MonoBehaviour
         // jump (dpad up)
         if ((Input.GetAxis("Vertical") > 0.5f || Input.GetKey(KeyCode.Space)) && isGrounded)
         {
-            GetComponent<Animator>().SetTrigger("Jump");
+            animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             isGrounded = false;
         }
 
-        // crouch
+        // crouch (dpad down)
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.JoystickButton2))
         {
-            GetComponent<Animator>().SetBool("Crouch", true);
+            animator.SetBool("Crouch", true);
         } else {
-            GetComponent<Animator>().SetBool("Crouch", false);
+            animator.SetBool("Crouch", false);
         }
 
         // main attack (X)
         if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.E))
         {
-            GetComponent<Animator>().SetTrigger("Main Attack");
+            animator.SetBool("isAttacking", true);
+            animator.SetTrigger("Main Attack");
+            animator.SetBool("isAttacking", false);
         }
 
         // kick (square)
         if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Q))
         {
-            GetComponent<Animator>().SetTrigger("Kick");
+            animator.SetBool("isKicking", true);
+            animator.SetTrigger("Kick");
+            animator.SetBool("isKicking", false);
         }
     }
 

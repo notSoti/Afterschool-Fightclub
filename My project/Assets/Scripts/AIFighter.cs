@@ -3,6 +3,7 @@ using UnityEngine;
 public class FighterAI : MonoBehaviour
 {
     public Transform player;
+    public bool freeze = true;
     public float moveSpeed = 7f;
     public float jumpForce = 7f;
     public float attackRange = 1.5f;
@@ -14,6 +15,7 @@ public class FighterAI : MonoBehaviour
 
     void Update()
     {
+        if (freeze) return;
         attackTimer -= Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.position);
 
