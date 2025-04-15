@@ -43,9 +43,20 @@ public class ControllerMovements : MonoBehaviour {
 
         // crouch (dpad down)
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.JoystickButton2) && isGrounded) {
-            animator.SetBool("Crouch", true);
+            animator.SetTrigger("Crouch Down");
+            animator.SetBool("isCrouching", true);
+            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+            if (state.IsName("Crouch Down") && state.normalizedTime > 0.95f && state.normalizedTime < 1f)
+            {
+                animator.speed = 0f;
+            }
         } else {
-            animator.SetBool("Crouch", false);
+            animator.ResetTrigger("Crouch Up");
+            animator.SetBool("isCrouching", false);
+            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+            if (state.IsName("Crouch Down") && state.normalizedTime > 0.95f && state.normalizedTime < 1f) {
+                animator.speed = 1f;
+            }
         }
 
         // main attack (X)
