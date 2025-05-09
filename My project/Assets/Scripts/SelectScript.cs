@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public enum Character { Tsuki, Jasmine, Mihu };
+    public enum Character { Tsuki, Mihu, Jasmine };
     public Character player;
 
     void Start() {
-        player = (Character)Random.Range(0, 2); //default option
+        player = (Character)Random.Range(0, 1); //default option
     }
 
     void SelectChar1() {
@@ -22,7 +22,7 @@ public class NewBehaviourScript : MonoBehaviour
     }
 
     void SelectChar4() {
-        player = (Character)Random.Range(0, 2);
+        player = (Character)Random.Range(0, 1);
     }
 
     public Character GetP1() {
