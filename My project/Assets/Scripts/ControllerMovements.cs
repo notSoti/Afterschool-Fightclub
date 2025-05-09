@@ -3,7 +3,11 @@ using UnityEngine;
 public class ControllerMovements : MonoBehaviour {
     public float moveSpeed = 7f;
     public float jumpForce = 7f;
+    public float mainAttackCooldown = 1f;
+    public float kickCooldown = 0.7f;
 
+    private float mainAttackTimer = 0f;
+    private float kickTimer = 0f;
     private Rigidbody2D rb;
     private Animator animator;
     private bool isGrounded;
@@ -14,6 +18,9 @@ public class ControllerMovements : MonoBehaviour {
     }
 
     void Update() {
+        mainAttackTimer -= Time.deltaTime;
+        kickTimer -= Time.deltaTime;
+
         bool isFalling = rb.linearVelocity.y <= -0.01f || (!isGrounded && rb.linearVelocity.y < 0.2f);
 
         if (isFalling) {
@@ -60,17 +67,42 @@ public class ControllerMovements : MonoBehaviour {
         }
 
         // main attack (X)
-        if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.E) && !isFalling) {
+        if ((Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.E)) && !isFalling && mainAttackTimer <= 0f) {
+            mainAttackTimer = mainAttackCooldown;  // Set cooldown first
             animator.SetBool("isAttacking", true);
             animator.SetTrigger("Main Attack");
             animator.SetBool("isAttacking", false);
         }
 
         // kick (square)
-        if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Q) && !isFalling) {
+        if ((Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Q)) && !isFalling && kickTimer <= 0f) {
+            kickTimer = kickCooldown;  // Set cooldown first
             animator.SetBool("isKicking", true);
             animator.SetTrigger("Kick");
             animator.SetBool("isKicking", false);
+        }
+    }
+
+    public Collider2D hitboxCollider;
+    public void EnableHitbox()
+    {
+        if (hitboxCollider != null)
+        {
+            hitboxCollider.enabled = true;
+
+            if (hitboxCollider.TryGetComponent<Hitbox>(out var hitbox))
+            {
+                hitbox.ResetHits();
+            }
+        }
+    }
+
+
+    public void DisableHitbox()
+    {
+        // Debug.Log($"Hitbox disabled: {hitboxCollider.gameObject.name}");
+        if (hitboxCollider != GetComponent<Collider2D>()) {
+            hitboxCollider.enabled = false;
         }
     }
 

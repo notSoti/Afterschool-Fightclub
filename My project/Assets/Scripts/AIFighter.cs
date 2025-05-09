@@ -7,16 +7,19 @@ public class FighterAI : MonoBehaviour
     public float moveSpeed = 7f;
     public float jumpForce = 7f;
     public float attackRange = 1.5f;
-    public float attackCooldown = 1f;
+    public float mainAttackCooldown = 1f;
+    public float kickCooldown = 0.7f;
 
-    private float attackTimer = 0f;
+    private float mainAttackTimer = 0f;
+    private float kickTimer = 0f;
     private enum AIState { Idle, Chase, Attack }
     private AIState currentState = AIState.Idle;
 
     void Update()
     {
         if (freeze) return;
-        attackTimer -= Time.deltaTime;
+        mainAttackTimer -= Time.deltaTime;
+        kickTimer -= Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.position);
 
         switch (currentState)
@@ -43,29 +46,29 @@ public class FighterAI : MonoBehaviour
                 {
                     Escape();
                 }
-                if (attackTimer <= 0f)
+                if (mainAttackTimer <= 0f || kickTimer <= 0f)  // If either attack is available
                 {
                     float randomValue = Random.value;
                     if (distance <= attackRange * 0.5f)
                     {
-                        // Close range; more likely to use main attack
-                        if (randomValue < 0.7f)
+                        // Close range; more likely to use main attack if available
+                        if (randomValue < 0.7f && mainAttackTimer <= 0f)
                         {
                             MainAttack();
                         }
-                        else
+                        else if (kickTimer <= 0f)
                         {
                             Kick();
                         }
                     }
                     else if (distance <= attackRange)
                     {
-                        // Medium range; more likely to kick
-                        if (randomValue < 0.6f)
+                        // Medium range; more likely to kick if available
+                        if (randomValue < 0.6f && kickTimer <= 0f)
                         {
                             Kick();
                         }
-                        else
+                        else if (mainAttackTimer <= 0f)
                         {
                             MainAttack();
                         }
@@ -75,7 +78,6 @@ public class FighterAI : MonoBehaviour
                         currentState = AIState.Chase;
                         return;
                     }
-                    attackTimer = attackCooldown;
                 }
                 break;
         }
@@ -150,11 +152,39 @@ public class FighterAI : MonoBehaviour
 
     void Kick()
     {
+        kickTimer = kickCooldown;  // Set cooldown first
         GetComponent<Animator>().SetTrigger("Kick");
     }
 
     void MainAttack()
     {
+        mainAttackTimer = mainAttackCooldown;  // Set cooldown first
         GetComponent<Animator>().SetTrigger("Main Attack");
     }
+
+    public Collider2D hitboxCollider;
+
+    public void EnableHitbox()
+    {
+        if (hitboxCollider != null)
+        {
+            hitboxCollider.enabled = true;
+
+            if (hitboxCollider.TryGetComponent<Hitbox>(out var hitbox))
+            {
+                hitbox.ResetHits();
+            }
+        }
+    }
+
+
+    public void DisableHitbox()
+    {
+        if (hitboxCollider != null)
+        {
+            // Debug.Log($"Disabling: {hitboxCollider.gameObject.name}");
+            hitboxCollider.enabled = false;
+        }
+    }
+
 }
