@@ -49,4 +49,9 @@ public class Health : MonoBehaviour {
             Debug.LogError($"Failed to load scene: {e.Message}");
         }
     }
+
+    public bool IsDead() => isDead;
+    public int GetCurrentHealth() => currentHealth;
+    public int GetMaxHealth() => maxHealth;
+    public float GetHealthPercentage() => (float)currentHealth / maxHealth;
 }
