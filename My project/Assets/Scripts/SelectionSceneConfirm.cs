@@ -17,8 +17,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private void Update() {
 
-        if (time >= 0)
-        {
+        if (time >= 0) {
             time += Time.deltaTime;
         }
 
@@ -36,12 +35,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (Math.Floor(time) == 3) {
             numberone.SetActive(false);
             time = -1;
-            // SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        
-
-
     }
-
-
 }
