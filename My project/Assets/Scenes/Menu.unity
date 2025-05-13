@@ -999,7 +999,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 571494035}
+      - m_Target: {fileID: 1060469356}
         m_TargetAssemblyTypeName: MyVolumeSettings, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 1
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 571494035}
+      - m_Target: {fileID: 1060469356}
         m_TargetAssemblyTypeName: MyVolumeSettings, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 1
@@ -1700,7 +1700,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 571494034}
-  - component: {fileID: 571494035}
   m_Layer: 5
   m_Name: Options Menu
   m_TagString: Untagged
@@ -1728,21 +1727,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &571494035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571494033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391e7f614bd993f4ca3ebc57dda99486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myMixer: {fileID: 24100000, guid: 82eebcf9e19a1494f818fd4491efb342, type: 2}
-  musicSlider: {fileID: 421840952}
-  SFXSlider: {fileID: 466671263}
 --- !u!1 &575437595
 GameObject:
   m_ObjectHideFlags: 0
@@ -3328,6 +3312,7 @@ GameObject:
   - component: {fileID: 1060469354}
   - component: {fileID: 1060469353}
   - component: {fileID: 1060469352}
+  - component: {fileID: 1060469356}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3422,6 +3407,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1060469356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060469351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391e7f614bd993f4ca3ebc57dda99486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMixer: {fileID: 24100000, guid: 82eebcf9e19a1494f818fd4491efb342, type: 2}
+  musicSlider: {fileID: 421840952}
+  SFXSlider: {fileID: 466671263}
 --- !u!1 &1198113286
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip specialbell; // special ability is available
 
+ 
+
     private void Start()
     {
         switch (SceneManager.GetActiveScene().buildIndex) // select sound pou 8a pextei, analoga scene
@@ -28,9 +30,10 @@ public class AudioManager : MonoBehaviour
                 musicSource.clip = backround2;
                 break;
 
-            /* case 2:
+            case 2:
                 musicSource.clip = backround3;
-                break; */
+                break;
+
             case 3:
                 musicSource.clip = backround2;
                 break;
