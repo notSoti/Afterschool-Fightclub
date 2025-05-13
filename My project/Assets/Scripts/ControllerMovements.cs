@@ -11,10 +11,12 @@ public class ControllerMovements : MonoBehaviour {
     private Rigidbody2D rb;
     private Animator animator;
     private bool isGrounded;
+    private UltimateAbility ultimateAbility;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        ultimateAbility = GetComponent<UltimateAbility>();
     }
 
     void Update() {
@@ -81,6 +83,11 @@ public class ControllerMovements : MonoBehaviour {
             animator.SetBool("isKicking", true);
             animator.SetTrigger("Kick");
             animator.SetBool("isKicking", false);
+        }
+
+        // ultimate move (R)
+        if (ultimateAbility != null && !isFalling && ultimateAbility.IsUltimateReady() && (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.JoystickButton3))) {
+            ultimateAbility.UseUltimate();
         }
     }
 

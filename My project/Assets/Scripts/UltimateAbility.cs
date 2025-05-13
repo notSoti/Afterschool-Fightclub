@@ -2,9 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class UltimateAbility : MonoBehaviour
-{
-    [SerializeField] private float maxUltCharge = 100f;
-    [SerializeField] private KeyCode ultimateKey = KeyCode.R;
+{    [SerializeField] private float maxUltCharge = 100f;
 
     private float currentCharge;
     private bool isUltimateReady;
@@ -16,12 +14,6 @@ public class UltimateAbility : MonoBehaviour
     private void Start() {
         currentCharge = 0f;
         isUltimateReady = false;
-    }
-
-    private void Update() {
-        if (isUltimateReady && Input.GetKeyDown(ultimateKey)) {
-            UseUltimate();
-        }
     }
     public void AddCharge(float damageDealt) {
         if (isUltimateReady) return;
