@@ -15,26 +15,22 @@ public class FighterAI : MonoBehaviour
     private enum AIState { Idle, Chase, Attack }
     private AIState currentState = AIState.Idle;
 
-    void Update()
-    {
+    void Update() {
         if (freeze) return;
         mainAttackTimer -= Time.deltaTime;
         kickTimer -= Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.position);
 
-        switch (currentState)
-        {
+        switch (currentState) {
             case AIState.Idle:
-                if (ShouldEscape())
-                {
+                if (ShouldEscape()) {
                     Escape();
                 }
                 if (distance < attackRange * 2) currentState = AIState.Chase;
                 break;
 
             case AIState.Chase:
-                if (ShouldEscape())
-                {
+                if (ShouldEscape()) {
                     Escape();
                 }
                 MoveTowardsPlayer();
@@ -42,39 +38,30 @@ public class FighterAI : MonoBehaviour
                 break;
 
             case AIState.Attack:
-                if (ShouldEscape())
-                {
+                if (ShouldEscape()) {
                     Escape();
                 }
-                if (mainAttackTimer <= 0f || kickTimer <= 0f)  // If either attack is available
-                {
+                if (mainAttackTimer <= 0f || kickTimer <= 0f) {
                     float randomValue = Random.value;
-                    if (distance <= attackRange * 0.5f)
-                    {
+                    if (distance <= attackRange * 0.5f) {
                         // Close range; more likely to use main attack if available
-                        if (randomValue < 0.7f && mainAttackTimer <= 0f)
-                        {
+                        if (randomValue < 0.7f && mainAttackTimer <= 0f) {
                             MainAttack();
                         }
-                        else if (kickTimer <= 0f)
-                        {
+                        else if (kickTimer <= 0f) {
                             Kick();
                         }
                     }
-                    else if (distance <= attackRange)
-                    {
+                    else if (distance <= attackRange) {
                         // Medium range; more likely to kick if available
-                        if (randomValue < 0.6f && kickTimer <= 0f)
-                        {
+                        if (randomValue < 0.6f && kickTimer <= 0f) {
                             Kick();
                         }
-                        else if (mainAttackTimer <= 0f)
-                        {
+                        else if (mainAttackTimer <= 0f) {
                             MainAttack();
                         }
                     }
-                    else
-                    {
+                    else {
                         currentState = AIState.Chase;
                         return;
                     }
@@ -83,8 +70,7 @@ public class FighterAI : MonoBehaviour
         }
     }
 
-    void MoveTowardsPlayer()
-    {
+    void MoveTowardsPlayer() {
         Vector2 direction = (player.position - transform.position).normalized;
         float distance = Vector2.Distance(transform.position, player.position);
 
@@ -95,10 +81,8 @@ public class FighterAI : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
 
-        if (player.position.y > transform.position.y + 0.5f || distance < 2f)
-        {
-            if (rb != null && Mathf.Abs(rb.linearVelocity.y) < 0.1f)
-            {
+        if (player.position.y > transform.position.y + 0.5f || distance < 2f) {
+            if (rb != null && Mathf.Abs(rb.linearVelocity.y) < 0.1f) {
                 Jump(rb);
             }
         }
@@ -117,10 +101,8 @@ public class FighterAI : MonoBehaviour
     private Vector3 lastPosition;
     private float lastMoveTime;
 
-    bool ShouldEscape()
-    {
-        if (Vector3.Distance(transform.position, lastPosition) > 0.1f)
-        {
+    bool ShouldEscape() {
+        if (Vector3.Distance(transform.position, lastPosition) > 0.1f) {
             lastPosition = transform.position;
             lastMoveTime = Time.time;
             return false;
@@ -129,57 +111,48 @@ public class FighterAI : MonoBehaviour
         return Time.time - lastMoveTime > 3f;
     }
 
-    void Escape()
-    {
+    void Escape() {
         Vector2 direction = new(Random.value > 0.5f ? 1 : -1, 0);
         float escapeSpeed = moveSpeed * 1.5f;
         transform.position += escapeSpeed * Time.deltaTime * (Vector3)direction;
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null && Mathf.Abs(rb.linearVelocity.y) < 0.1f)
-        {
+        if (rb != null && Mathf.Abs(rb.linearVelocity.y) < 0.1f) {
             Jump(rb);
         }
 
         currentState = AIState.Idle;
     }
 
-    void Jump(Rigidbody2D rb)
-    {
+    void Jump(Rigidbody2D rb) {
         GetComponent<Animator>().SetTrigger("Jump");
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    void Kick()
-    {
-        kickTimer = kickCooldown;  // Set cooldown first
+    void Kick() {
+        kickTimer = kickCooldown;
         GetComponent<Animator>().SetTrigger("Kick");
     }
 
-    void MainAttack()
-    {
-        mainAttackTimer = mainAttackCooldown;  // Set cooldown first
+    void MainAttack() {
+        mainAttackTimer = mainAttackCooldown;
         GetComponent<Animator>().SetTrigger("Main Attack");
     }
 
     public Collider2D hitboxCollider;
 
-    public void EnableHitbox()
-    {
-        if (hitboxCollider != null)
-        {
+    public void EnableHitbox() {
+        if (hitboxCollider != null) {
             hitboxCollider.enabled = true;
 
-            if (hitboxCollider.TryGetComponent<Hitbox>(out var hitbox))
-            {
+            if (hitboxCollider.TryGetComponent<Hitbox>(out var hitbox)) {
                 hitbox.ResetHits();
             }
         }
     }
 
 
-    public void DisableHitbox()
-    {
+    public void DisableHitbox() {
         if (hitboxCollider != null)
         {
             // Debug.Log($"Disabling: {hitboxCollider.gameObject.name}");

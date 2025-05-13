@@ -974,6 +974,7 @@ GameObject:
   - component: {fileID: 1322354988}
   - component: {fileID: 1322354987}
   - component: {fileID: 1322354993}
+  - component: {fileID: 1322354994}
   m_Layer: 6
   m_Name: ai_fighter
   m_TagString: Untagged
@@ -1168,6 +1169,27 @@ MonoBehaviour:
   mainAttackCooldown: 1
   kickCooldown: 0.7
   hitboxCollider: {fileID: 816378345}
+--- !u!114 &1322354994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322354985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d5217a4471c024eab84bfba2719cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  fadeOnDeath: 1
+  fadeAlpha: 0.3
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1522532158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,6 +1391,7 @@ GameObject:
   - component: {fileID: 1972607178}
   - component: {fileID: 1972607183}
   - component: {fileID: 1972607184}
+  - component: {fileID: 1972607185}
   m_Layer: 6
   m_Name: fighter1
   m_TagString: Player
@@ -1560,6 +1583,27 @@ MonoBehaviour:
   mainAttackCooldown: 1
   kickCooldown: 0.7
   hitboxCollider: {fileID: 517503557}
+--- !u!114 &1972607185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972607177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d5217a4471c024eab84bfba2719cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  fadeOnDeath: 1
+  fadeAlpha: 0.3
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

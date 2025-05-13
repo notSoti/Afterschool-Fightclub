@@ -84,22 +84,18 @@ public class ControllerMovements : MonoBehaviour {
     }
 
     public Collider2D hitboxCollider;
-    public void EnableHitbox()
-    {
-        if (hitboxCollider != null)
-        {
+    public void EnableHitbox() {
+        if (hitboxCollider != null) {
             hitboxCollider.enabled = true;
 
-            if (hitboxCollider.TryGetComponent<Hitbox>(out var hitbox))
-            {
+            if (hitboxCollider.TryGetComponent<Hitbox>(out var hitbox)) {
                 hitbox.ResetHits();
             }
         }
     }
 
 
-    public void DisableHitbox()
-    {
+    public void DisableHitbox() {
         // Debug.Log($"Hitbox disabled: {hitboxCollider.gameObject.name}");
         if (hitboxCollider != GetComponent<Collider2D>()) {
             hitboxCollider.enabled = false;
