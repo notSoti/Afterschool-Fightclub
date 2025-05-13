@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbf9eea5b8c64d44b127ecfecc0f76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
   owner: {fileID: 1972607177}
 --- !u!50 &517503556
 Rigidbody2D:
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbf9eea5b8c64d44b127ecfecc0f76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
   owner: {fileID: 1322354985}
 --- !u!50 &816378344
 Rigidbody2D:
@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 1322354987}
   - component: {fileID: 1322354993}
   - component: {fileID: 1322354994}
+  - component: {fileID: 1322354995}
   m_Layer: 6
   m_Name: ai_fighter
   m_TagString: Untagged
@@ -1181,13 +1182,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d5217a4471c024eab84bfba2719cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  fadeOnDeath: 1
-  fadeAlpha: 0.3
+  maxHealth: 100
   onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1322354995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322354985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cef1a771d3cb43448281d8eef052010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUltCharge: 100
+  ultimateKey: 114
+  onChargeChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onUltimateReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onUltimateUsed:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1522532158
@@ -1392,6 +1414,7 @@ GameObject:
   - component: {fileID: 1972607183}
   - component: {fileID: 1972607184}
   - component: {fileID: 1972607185}
+  - component: {fileID: 1972607186}
   m_Layer: 6
   m_Name: fighter1
   m_TagString: Player
@@ -1595,13 +1618,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d5217a4471c024eab84bfba2719cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  fadeOnDeath: 1
-  fadeAlpha: 0.3
+  maxHealth: 100
   onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
   onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1972607186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972607177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cef1a771d3cb43448281d8eef052010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUltCharge: 100
+  ultimateKey: 114
+  onChargeChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onUltimateReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onUltimateUsed:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1660057539 &9223372036854775807
