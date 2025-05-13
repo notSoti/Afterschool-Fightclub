@@ -39,7 +39,7 @@ public class UltimateAbility : MonoBehaviour
         }
     }
 
-    private void UseUltimate() {
+    public void UseUltimate() {
         if (!isUltimateReady) return;
 
         Debug.Log($"{gameObject.name} used their Ultimate!");
@@ -50,8 +50,7 @@ public class UltimateAbility : MonoBehaviour
         isUltimateReady = false;
         onChargeChanged?.Invoke(0f);
 
-        // TODO: Implement your ultimate ability effect here
-        // For example: AoE damage, buff, special attack, etc.
+        // TODO: Iadd ult logic here
     }
 
     public float GetChargePercentage() => currentCharge / maxUltCharge;

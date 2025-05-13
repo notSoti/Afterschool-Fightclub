@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1972607182}
-  freeze: 1
+  freeze: 0
   moveSpeed: 5
   jumpForce: 7
   attackRange: 1.5

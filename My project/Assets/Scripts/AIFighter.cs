@@ -7,6 +7,7 @@ public class FighterAI : MonoBehaviour
     public float moveSpeed = 7f;
     public float jumpForce = 7f;
     public float attackRange = 1.5f;
+    private UltimateAbility ultimate;
     public float mainAttackCooldown = 1f;
     public float kickCooldown = 0.7f;
 
@@ -15,11 +16,21 @@ public class FighterAI : MonoBehaviour
     private enum AIState { Idle, Chase, Attack }
     private AIState currentState = AIState.Idle;
 
+    void Start() {
+        ultimate = GetComponent<UltimateAbility>();
+        currentState = AIState.Idle;
+    }
+
     void Update() {
         if (freeze) return;
         mainAttackTimer -= Time.deltaTime;
         kickTimer -= Time.deltaTime;
         float distance = Vector2.Distance(transform.position, player.position);
+
+        // Try to use ultimate when close to the player
+        if (ultimate != null && ultimate.IsUltimateReady() && distance <= attackRange * 0.7f) {
+            UseUltimate();
+        }
 
         switch (currentState) {
             case AIState.Idle:
@@ -137,6 +148,10 @@ public class FighterAI : MonoBehaviour
     void MainAttack() {
         mainAttackTimer = mainAttackCooldown;
         GetComponent<Animator>().SetTrigger("Main Attack");
+    }
+    void UseUltimate() {
+        if (ultimate == null || !ultimate.IsUltimateReady()) return;
+        ultimate.UseUltimate();
     }
 
     public Collider2D hitboxCollider;

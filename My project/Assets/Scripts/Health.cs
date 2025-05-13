@@ -44,7 +44,7 @@ public class Health : MonoBehaviour {
         Debug.Log($"{gameObject.name} has died!");
 
         try {
-            SceneManager.LoadScene("Victory Screen");
+            SceneManager.LoadScene("Menu");
         } catch (System.Exception e) {
             Debug.LogError($"Failed to load scene: {e.Message}");
         }
