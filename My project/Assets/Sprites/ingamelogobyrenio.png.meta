@@ -384,7 +384,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ingamelogobyrenio_0: 291522564364775255
+      ingamelogobyrenio_1: -9195882973229053907
+      ingamelogobyrenio_10: 6365032833000747817
+      ingamelogobyrenio_2: 3000057518889978641
+      ingamelogobyrenio_3: 7434686782458183504
+      ingamelogobyrenio_4: 1530519410837044756
+      ingamelogobyrenio_5: 5584667579724437078
+      ingamelogobyrenio_6: -6614108649329662405
+      ingamelogobyrenio_7: 5776779582108923547
+      ingamelogobyrenio_8: 5800463361823803101
+      ingamelogobyrenio_9: 6388826475148817833
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
