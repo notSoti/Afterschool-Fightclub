@@ -30,7 +30,8 @@ public class ControllerMovements : MonoBehaviour {
         // horizontal movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         rb.freezeRotation = true; // this line prevents tipping over
-        rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(moveHorizontal * moveSpeed, rb.linearVelocity.y);        // Set walking animation
+        animator.SetBool("isWalking", Mathf.Abs(moveHorizontal) > 0.1f);
 
         // flip the character
         if (moveHorizontal > 0.1f) {

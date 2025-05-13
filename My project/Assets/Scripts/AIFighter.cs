@@ -8,6 +8,7 @@ public class FighterAI : MonoBehaviour
     public float jumpForce = 7f;
     public float attackRange = 1.5f;
     private UltimateAbility ultimate;
+    private Animator animator;
     public float mainAttackCooldown = 1f;
     public float kickCooldown = 0.7f;
 
@@ -18,6 +19,7 @@ public class FighterAI : MonoBehaviour
 
     void Start() {
         ultimate = GetComponent<UltimateAbility>();
+        animator = GetComponent<Animator>();
         currentState = AIState.Idle;
     }
 
@@ -31,6 +33,7 @@ public class FighterAI : MonoBehaviour
         if (ultimate != null && ultimate.IsUltimateReady() && distance <= attackRange * 0.7f) {
             UseUltimate();
         }
+        animator.SetBool("isWalking", false);
 
         switch (currentState) {
             case AIState.Idle:
@@ -83,11 +86,11 @@ public class FighterAI : MonoBehaviour
 
     void MoveTowardsPlayer() {
         Vector2 direction = (player.position - transform.position).normalized;
-        float distance = Vector2.Distance(transform.position, player.position);
-
-        // Increase speed when close to the player
+        float distance = Vector2.Distance(transform.position, player.position);        // Increase speed when close to the player
         float currentSpeed = moveSpeed * (1 + (2f / (distance + 0.5f)));
         transform.position += currentSpeed * Time.deltaTime * (Vector3)direction;
+
+        animator.SetBool("isWalking", true);
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
