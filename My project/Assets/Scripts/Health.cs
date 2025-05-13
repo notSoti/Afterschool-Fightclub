@@ -1,18 +1,25 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
     [SerializeField] private int maxHealth = 100;
-    
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
+
     private bool isDead;
 
     public UnityEvent<int> onHealthChanged;
     public UnityEvent onDeath;
+    public Image healthBar;
 
     private void Start() {
         currentHealth = maxHealth;
+    }
+
+    private void Update() 
+    {
+        healthBar.fillAmount = Mathf.Clamp((float)GetCurrentHealth() / GetMaxHealth() , 0, 1);
     }
 
     public void TakeDamage(int amount)
@@ -44,7 +51,7 @@ public class Health : MonoBehaviour {
         Debug.Log($"{gameObject.name} has died!");
 
         try {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("VictoryScreen");
         } catch (System.Exception e) {
             Debug.LogError($"Failed to load scene: {e.Message}");
         }

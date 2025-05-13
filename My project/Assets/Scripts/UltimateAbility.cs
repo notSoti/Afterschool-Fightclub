@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class UltimateAbility : MonoBehaviour
 {    [SerializeField] private float maxUltCharge = 100f;
@@ -10,11 +11,17 @@ public class UltimateAbility : MonoBehaviour
     public UnityEvent<float> onChargeChanged; // Sends charge percentage (0-1)
     public UnityEvent onUltimateReady;
     public UnityEvent onUltimateUsed;
+    public Image ultBar;
 
     private void Start() {
         currentCharge = 0f;
         isUltimateReady = false;
     }
+
+    public void Update() {
+        ultBar.fillAmount = Mathf.Clamp(GetChargePercentage(), 0, 1);
+    }
+
     public void AddCharge(float damageDealt) {
         if (isUltimateReady) return;
 
