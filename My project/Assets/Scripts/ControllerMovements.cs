@@ -91,6 +91,11 @@ public class ControllerMovements : MonoBehaviour {
         }
     }
 
+    // This ensures the animations don't get weird after mid air moves
+    public void OnMoveEnd() {
+        CancelMove();
+    }
+
     public Collider2D hitboxCollider;
     public void EnableHitbox() {
         if (hitboxCollider != null) {
@@ -113,6 +118,9 @@ public class ControllerMovements : MonoBehaviour {
     void CancelMove() {
         animator.ResetTrigger("Kick");
         animator.ResetTrigger("Main Attack");
+        animator.ResetTrigger("Jump");
+        animator.SetBool("isKicking", false);
+        animator.SetBool("isAttacking", false);
     }
 
     void OnCollisionEnter2D(Collision2D collision) {

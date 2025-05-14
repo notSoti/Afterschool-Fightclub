@@ -145,12 +145,16 @@ public class FighterAI : MonoBehaviour
 
     void Kick() {
         kickTimer = kickCooldown;
-        GetComponent<Animator>().SetTrigger("Kick");
+        animator.SetBool("isKicking", true);
+        animator.SetTrigger("Kick");
+        animator.SetBool("isKicking", false);
     }
 
     void MainAttack() {
         mainAttackTimer = mainAttackCooldown;
-        GetComponent<Animator>().SetTrigger("Main Attack");
+        animator.SetBool("isAttacking", true);
+        animator.SetTrigger("Main Attack");
+        animator.SetBool("isAttacking", false);
     }
     void UseUltimate() {
         if (ultimate == null || !ultimate.IsUltimateReady()) return;
@@ -178,4 +182,15 @@ public class FighterAI : MonoBehaviour
         }
     }
 
+    void CancelMove() {
+        animator.ResetTrigger("Kick");
+        animator.ResetTrigger("Main Attack");
+        animator.ResetTrigger("Jump");
+        animator.SetBool("isKicking", false);
+        animator.SetBool("isAttacking", false);
+    }
+
+    public void OnMoveEnd() {
+        CancelMove();
+    }
 }
