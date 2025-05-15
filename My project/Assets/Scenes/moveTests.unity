@@ -1899,11 +1899,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122333ea6dcd4794dbd378b0abcb69db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiDifficulty: 1
   player: {fileID: 1972607182}
   freeze: 0
-  moveSpeed: 5
-  jumpForce: 7
-  attackRange: 1.5
+  baseSpeed: 7
+  baseJumpForce: 7
+  baseAttackRange: 1.5
   mainAttackCooldown: 1
   kickCooldown: 0.7
   hitboxCollider: {fileID: 816378345}
@@ -2100,7 +2101,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517794662}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 513313f297edd454d9df34e51e054b91, type: 3}
   m_Name: 
@@ -2139,7 +2140,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517794662}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -2538,16 +2539,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581132445}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 122333ea6dcd4794dbd378b0abcb69db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiDifficulty: 1
   player: {fileID: 1972607182}
   freeze: 0
-  moveSpeed: 5
-  jumpForce: 7
-  attackRange: 1.5
+  baseSpeed: 7
+  baseJumpForce: 7
+  baseAttackRange: 1.5
   mainAttackCooldown: 1
   kickCooldown: 0.7
   hitboxCollider: {fileID: 771062176}
@@ -2580,7 +2582,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581132445}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
