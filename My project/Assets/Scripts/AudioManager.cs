@@ -6,7 +6,8 @@ public class AudioManager : MonoBehaviour
     [Header("---------- Audio Source ----------")]
     [SerializeField] AudioSource musicSource; // music and soundeffects
     [SerializeField] AudioSource SFXSource;
-
+    public static float musicValue;
+    public static float SFXValue;
 
     [Header("----------- Audio Clip -----------")]
     public AudioClip backround1; //main menu music
@@ -16,7 +17,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip specialbell; // special ability is available
 
- 
 
     private void Start()
     {

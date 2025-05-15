@@ -22,8 +22,13 @@ public class MyVolumeSettings : MonoBehaviour
     }
 
     public void SetMusicVolume()
-    { 
-        float volume = musicSlider.value;
+    {
+        if (musicSlider != null)
+        {
+            AudioManager.musicValue = musicSlider.value;
+            // gotta jail the sliders in an IF cuz they dont exist in all scenes
+        }
+        float volume = AudioManager.musicValue;
         myMixer.SetFloat("music", Mathf.Log10(volume)*20);
         PlayerPrefs.SetFloat("musicVolume", volume); // save music volume settings between game restarts
 
@@ -31,7 +36,12 @@ public class MyVolumeSettings : MonoBehaviour
 
     public void SetSFXVolume()
     {
-        float volume = SFXSlider.value;
+        if (SFXSlider != null)
+        {
+            AudioManager.SFXValue = SFXSlider.value;
+            // JAILLLLLL
+        }
+        float volume = AudioManager.SFXValue;
         myMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("SFXVolume", volume); // save sfx volume settings between game restarts
 
@@ -39,8 +49,12 @@ public class MyVolumeSettings : MonoBehaviour
 
     private void LoadVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        if (SFXSlider != null && musicSlider != null)
+        {
+            musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+            SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+            // II II II
+        }
         SetMusicVolume();
         SetSFXVolume();
     }
