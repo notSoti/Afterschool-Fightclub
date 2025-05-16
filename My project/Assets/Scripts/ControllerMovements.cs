@@ -12,11 +12,40 @@ public class ControllerMovements : MonoBehaviour {
     private Animator animator;
     private bool isGrounded;
     private UltimateAbility ultimateAbility;
+    private Collider2D hitboxCollider;
 
     void Start() {
+        if (!gameObject.name.Contains("Player")) {
+            enabled = false;
+            return;
+        }
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         ultimateAbility = GetComponent<UltimateAbility>();
+
+        // Find and set up hitbox for attacks
+        Transform hitboxTransform = transform.Find("Player Hitbox");
+        if (hitboxTransform != null) {
+            hitboxCollider = hitboxTransform.GetComponent<Collider2D>();
+            if (hitboxCollider == null) {
+                Debug.LogError($"No Collider2D found on Player Hitbox for {gameObject.name}");
+            } else {
+                hitboxCollider.enabled = false; // Make sure hitbox starts disabled
+            }
+            // Set up the hitbox owner
+            if (hitboxTransform.TryGetComponent<Hitbox>(out var hitbox)) {
+                hitbox.owner = gameObject;
+            }
+        } else {
+            Debug.LogError($"No Player Hitbox found for {gameObject.name}");
+        }
+
+        // Set up the hurtbox owner
+        Transform hurtboxTransform = transform.Find("Player Hurtbox");
+        if (hurtboxTransform != null && hurtboxTransform.TryGetComponent<Hurtbox>(out var hurtbox)) {
+            hurtbox.owner = gameObject;
+        }
     }
 
     void Update() {
@@ -96,8 +125,8 @@ public class ControllerMovements : MonoBehaviour {
         CancelMove();
     }
 
-    public Collider2D hitboxCollider;
     public void EnableHitbox() {
+        Debug.Log($"Enabling hitbox for {gameObject.name}");
         if (hitboxCollider != null) {
             hitboxCollider.enabled = true;
 
@@ -109,8 +138,8 @@ public class ControllerMovements : MonoBehaviour {
 
 
     public void DisableHitbox() {
-        // Debug.Log($"Hitbox disabled: {hitboxCollider.gameObject.name}");
-        if (hitboxCollider != GetComponent<Collider2D>()) {
+        Debug.Log($"Disabling hitbox for {gameObject.name}");
+        if (hitboxCollider != null && hitboxCollider != GetComponent<Collider2D>()) {
             hitboxCollider.enabled = false;
         }
     }

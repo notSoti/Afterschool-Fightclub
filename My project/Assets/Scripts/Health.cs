@@ -8,18 +8,37 @@ public class Health : MonoBehaviour {
     [SerializeField] private int currentHealth;
 
     private bool isDead;
+    private bool isPlayer;
+    private Image healthBar;
 
     public UnityEvent<int> onHealthChanged;
     public UnityEvent onDeath;
-    public Image healthBar;
 
     private void Start() {
         currentHealth = maxHealth;
+        isPlayer = name.Contains("Player");
+        
+        // Find the appropriate health bar based on whether this is a player or AI
+        string barName = isPlayer ? "Player1HealthBar" : "Player2HealthBar";
+        GameObject healthBarObj = GameObject.Find(barName);
+        if (healthBarObj != null) {
+            healthBar = healthBarObj.GetComponent<Image>();
+            if (healthBar == null) {
+                // Try to find it as a child component
+                healthBar = healthBarObj.GetComponentInChildren<Image>();
+            }
+        }
+        
+        if (healthBar == null) {
+            Debug.LogWarning($"Could not find health bar '{barName}' for {gameObject.name}");
+        }
     }
 
     private void Update() 
     {
-        healthBar.fillAmount = Mathf.Clamp((float)GetCurrentHealth() / GetMaxHealth() , 0, 1);
+        if (healthBar != null) {
+            healthBar.fillAmount = Mathf.Clamp(GetHealthPercentage(), 0, 1);
+        }
     }
 
     public void TakeDamage(int amount)

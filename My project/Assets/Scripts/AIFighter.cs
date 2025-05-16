@@ -33,6 +33,29 @@ public class FighterAI : MonoBehaviour
         animator = GetComponent<Animator>();
         currentState = AIState.Idle;
         rb = GetComponent<Rigidbody2D>();
+
+        // Find and set up hitbox for attacks
+        Transform hitboxTransform = transform.Find("Player Hitbox");
+        if (hitboxTransform != null) {
+            hitboxCollider = hitboxTransform.GetComponent<Collider2D>();
+            if (hitboxCollider == null) {
+                Debug.LogError($"No Collider2D found on Player Hitbox for {gameObject.name}");
+            } else {
+                hitboxCollider.enabled = false; // Make sure hitbox starts disabled
+            }
+            // Set up the hitbox owner
+            if (hitboxTransform.TryGetComponent<Hitbox>(out var hitbox)) {
+                hitbox.owner = gameObject;
+            }
+        } else {
+            Debug.LogError($"No Player Hitbox found for {gameObject.name}");
+        }
+
+        // Set up the hurtbox owner
+        Transform hurtboxTransform = transform.Find("Player Hurtbox");
+        if (hurtboxTransform != null && hurtboxTransform.TryGetComponent<Hurtbox>(out var hurtbox)) {
+            hurtbox.owner = gameObject;
+        }
         
         // Set up difficulty-based parameters
         switch (aiDifficulty) {

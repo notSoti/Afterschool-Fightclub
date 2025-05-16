@@ -7,9 +7,11 @@ public class Hitbox : MonoBehaviour
     public GameObject owner;
     private readonly HashSet<GameObject> alreadyHit = new();
     private UltimateAbility ultimateAbility;
-
-    private void Start() {
-        if (owner != null) {
+    private void Start()
+    {
+        GetComponent<Collider2D>().enabled = false; // Always start disabled
+        if (owner != null)
+        {
             ultimateAbility = owner.GetComponent<UltimateAbility>();
         }
     }
@@ -21,7 +23,7 @@ public class Hitbox : MonoBehaviour
             alreadyHit.Add(hurtbox.owner);
             
             // Charge ultimate when dealing damage
-            ultimateAbility?.AddCharge(damage);
+            ultimateAbility.AddCharge(damage);
         }
     }
 

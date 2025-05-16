@@ -3,23 +3,43 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UltimateAbility : MonoBehaviour
-{    [SerializeField] private float maxUltCharge = 100f;
+{    
+    [SerializeField] private float maxUltCharge = 100f;
 
     private float currentCharge;
     private bool isUltimateReady;
+    private bool isPlayer;
+    private Image ultBar;
 
     public UnityEvent<float> onChargeChanged; // Sends charge percentage (0-1)
     public UnityEvent onUltimateReady;
     public UnityEvent onUltimateUsed;
-    public Image ultBar;
 
     private void Start() {
         currentCharge = 0f;
         isUltimateReady = false;
+        isPlayer = name.Contains("Player");
+        
+        // Find the appropriate ult bar based on whether this is a player or AI
+        string barName = isPlayer ? "Player1UltBar" : "Player2UltBar";
+        GameObject ultBarObj = GameObject.Find(barName);
+        if (ultBarObj != null) {
+            ultBar = ultBarObj.GetComponent<Image>();
+            if (ultBar == null) {
+                // Try to find it as a child component
+                ultBar = ultBarObj.GetComponentInChildren<Image>();
+            }
+        }
+        
+        if (ultBar == null) {
+            Debug.LogWarning($"Could not find ultimate bar '{barName}' for {gameObject.name}");
+        }
     }
 
     public void Update() {
-        ultBar.fillAmount = Mathf.Clamp(GetChargePercentage(), 0, 1);
+        if (ultBar != null) {
+            ultBar.fillAmount = Mathf.Clamp(GetChargePercentage(), 0, 1);
+        }
     }
 
     public void AddCharge(float damageDealt) {
