@@ -1,40 +1,34 @@
 fileFormatVersion: 2
-guid: e622500145d94794c9824612213cfe6d
+guid: 4566c9a6b24d5c34eb1686dbd7cbaf69
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 291522564364775255
-    second: ingamelogobyrenio_0
+      213: -675216113114272746
+    second: ultcircletrans_0
   - first:
-      213: -9195882973229053907
-    second: ingamelogobyrenio_1
+      213: 6601044138847928697
+    second: ultcircletrans_1
   - first:
-      213: 3000057518889978641
-    second: ingamelogobyrenio_2
+      213: 5610927416631941519
+    second: ultcircletrans_2
   - first:
-      213: 7434686782458183504
-    second: ingamelogobyrenio_3
+      213: -2114682862200595561
+    second: ultcircletrans_3
   - first:
-      213: 1530519410837044756
-    second: ingamelogobyrenio_4
+      213: -3377788370752009438
+    second: ultcircletrans_4
   - first:
-      213: 5584667579724437078
-    second: ingamelogobyrenio_5
+      213: -7301077178951685706
+    second: ultcircletrans_5
   - first:
-      213: -6614108649329662405
-    second: ingamelogobyrenio_6
+      213: 8865765061158177749
+    second: ultcircletrans_6
   - first:
-      213: 5776779582108923547
-    second: ingamelogobyrenio_7
+      213: 5791622177067881402
+    second: ultcircletrans_7
   - first:
-      213: 5800463361823803101
-    second: ingamelogobyrenio_8
-  - first:
-      213: 6388826475148817833
-    second: ingamelogobyrenio_9
-  - first:
-      213: 6365032833000747817
-    second: ingamelogobyrenio_10
+      213: 8624945319061263133
+    second: ultcircletrans_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -130,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ingamelogobyrenio_0
+      name: ultcircletrans_0
       rect:
         serializedVersion: 2
-        x: 215
-        y: 730
-        width: 59
-        height: 78
+        x: 0
+        y: 194
+        width: 83
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 75f29fc4a32bb0400800000000000000
-      internalID: 291522564364775255
+      spriteID: 61c2437c58621a6f0800000000000000
+      internalID: -675216113114272746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingamelogobyrenio_1
+      name: ultcircletrans_1
       rect:
         serializedVersion: 2
-        x: 262
-        y: 763
-        width: 65
-        height: 64
+        x: 57
+        y: 295
+        width: 129
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d288e906829a16080800000000000000
-      internalID: -9195882973229053907
+      spriteID: 97184b2abae9b9b50800000000000000
+      internalID: 6601044138847928697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingamelogobyrenio_2
+      name: ultcircletrans_2
       rect:
         serializedVersion: 2
-        x: 300
-        y: 783
-        width: 88
-        height: 78
+        x: 192
+        y: 296
+        width: 130
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11b4d2f1b6852a920800000000000000
-      internalID: 3000057518889978641
+      spriteID: f89d8d8e1c40edd40800000000000000
+      internalID: 5610927416631941519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingamelogobyrenio_3
+      name: ultcircletrans_3
       rect:
         serializedVersion: 2
-        x: 378
-        y: 800
-        width: 72
-        height: 62
+        x: 296
+        y: 193
+        width: 84
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 05f36bcec305d2760800000000000000
-      internalID: 7434686782458183504
+      spriteID: 79b5de1142327a2e0800000000000000
+      internalID: -2114682862200595561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingamelogobyrenio_4
+      name: ultcircletrans_4
       rect:
         serializedVersion: 2
-        x: 449
-        y: 803
-        width: 68
-        height: 64
+        x: 0
+        y: 58
+        width: 82
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41e38cc8b4f7d3510800000000000000
-      internalID: 1530519410837044756
+      spriteID: 22b81e28f5faf11d0800000000000000
+      internalID: -3377788370752009438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingamelogobyrenio_5
+      name: ultcircletrans_5
       rect:
         serializedVersion: 2
-        x: 518
-        y: 805
-        width: 30
-        height: 83
+        x: 108
+        y: 110
+        width: 163
+        height: 163
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +249,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6569d1e2399b08d40800000000000000
-      internalID: 5584667579724437078
+      spriteID: 6b9afde0dfc5daa90800000000000000
+      internalID: -7301077178951685706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingamelogobyrenio_6
+      name: ultcircletrans_6
       rect:
         serializedVersion: 2
-        x: 74
-        y: 600
-        width: 87
-        height: 112
+        x: 298
+        y: 58
+        width: 82
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b36eddaf937f534a0800000000000000
-      internalID: -6614108649329662405
+      spriteID: 5db076ca956890b70800000000000000
+      internalID: 8865765061158177749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingamelogobyrenio_7
+      name: ultcircletrans_7
       rect:
         serializedVersion: 2
-        x: 129
-        y: 651
-        width: 71
-        height: 89
+        x: 58
+        y: 0
+        width: 128
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +293,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b96f4595c6e3b2050800000000000000
-      internalID: 5776779582108923547
+      spriteID: ab3d7694fa9ff5050800000000000000
+      internalID: 5791622177067881402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingamelogobyrenio_8
+      name: ultcircletrans_8
       rect:
         serializedVersion: 2
-        x: 172
-        y: 7
-        width: 1082
-        height: 777
+        x: 192
+        y: 0
+        width: 130
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,52 +315,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd60d2602b26f7050800000000000000
-      internalID: 5800463361823803101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ingamelogobyrenio_9
-      rect:
-        serializedVersion: 2
-        x: 31
-        y: 464
-        width: 76
-        height: 95
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9a53bd664dba9a850800000000000000
-      internalID: 6388826475148817833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ingamelogobyrenio_10
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 512
-        width: 96
-        height: 133
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 92335b263a3255850800000000000000
-      internalID: 6365032833000747817
+      spriteID: d1390dd1216f1b770800000000000000
+      internalID: 8624945319061263133
       vertices: []
       indices: 
       edges: []
@@ -385,17 +335,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ingamelogobyrenio_0: 291522564364775255
-      ingamelogobyrenio_1: -9195882973229053907
-      ingamelogobyrenio_10: 6365032833000747817
-      ingamelogobyrenio_2: 3000057518889978641
-      ingamelogobyrenio_3: 7434686782458183504
-      ingamelogobyrenio_4: 1530519410837044756
-      ingamelogobyrenio_5: 5584667579724437078
-      ingamelogobyrenio_6: -6614108649329662405
-      ingamelogobyrenio_7: 5776779582108923547
-      ingamelogobyrenio_8: 5800463361823803101
-      ingamelogobyrenio_9: 6388826475148817833
+      ultcircletrans_0: -675216113114272746
+      ultcircletrans_1: 6601044138847928697
+      ultcircletrans_2: 5610927416631941519
+      ultcircletrans_3: -2114682862200595561
+      ultcircletrans_4: -3377788370752009438
+      ultcircletrans_5: -7301077178951685706
+      ultcircletrans_6: 8865765061158177749
+      ultcircletrans_7: 5791622177067881402
+      ultcircletrans_8: 8624945319061263133
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

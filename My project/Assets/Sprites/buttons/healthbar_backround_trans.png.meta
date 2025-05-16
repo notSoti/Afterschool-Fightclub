@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 04c33602832b03245b29e8cfe500e9ae
+guid: 83855b9acd919b84488bfeb3ca188c45
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6532498629795206827
-    second: loadingbutton_0
+      213: -3682648231262594935
+    second: healthbar_backround_trans_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: loadingbutton_0
+      name: healthbar_backround_trans_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2040
-        height: 800
+        x: 4
+        y: 26
+        width: 687
+        height: 257
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 559a45b5b17e755a0800000000000000
-      internalID: -6532498629795206827
+      spriteID: 9885fd6f1fa94ecc0800000000000000
+      internalID: -3682648231262594935
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      loadingbutton_0: -6532498629795206827
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
