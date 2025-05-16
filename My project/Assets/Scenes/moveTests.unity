@@ -1594,11 +1594,6 @@ MonoBehaviour:
   aiDifficulty: 1
   player: {fileID: 0}
   freeze: 1
-  baseSpeed: 7
-  baseJumpForce: 7
-  baseAttackRange: 1.5
-  mainAttackCooldown: 1
-  kickCooldown: 0.7
   hitboxCollider: {fileID: 0}
 --- !u!1 &1192327362
 GameObject:
@@ -2013,7 +2008,7 @@ MonoBehaviour:
   - {fileID: 2010553660}
   playerSpawnPosition: {x: -7, y: 1}
   aiSpawnPosition: {x: 7, y: 1}
-  aiDifficulty: 0
+  aiDifficulty: 1
   cameraTarget: {fileID: 1161587117}
 --- !u!4 &1667521903
 Transform:
@@ -2296,11 +2291,6 @@ MonoBehaviour:
   aiDifficulty: 1
   player: {fileID: 0}
   freeze: 1
-  baseSpeed: 7
-  baseJumpForce: 7
-  baseAttackRange: 1.5
-  mainAttackCooldown: 1
-  kickCooldown: 0.7
   hitboxCollider: {fileID: 0}
 --- !u!1 &2102140481
 GameObject:
