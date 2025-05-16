@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tsukipixel_notselected_0: 6356777826586861384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
