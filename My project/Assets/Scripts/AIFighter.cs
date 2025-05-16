@@ -51,7 +51,7 @@ public class FighterAI : MonoBehaviour
         if (hurtboxTransform != null && hurtboxTransform.TryGetComponent<Hurtbox>(out var hurtbox)) {
             hurtbox.owner = gameObject;
         }
-        
+
         // Set up difficulty-based parameters
         switch (aiDifficulty) {
             case Difficulty.Easy:
@@ -109,7 +109,7 @@ public class FighterAI : MonoBehaviour
             Escape();
             return;
         }
-        
+
         // More aggressive state transitions
         switch (currentState) {
             case AIState.Idle:
@@ -150,26 +150,26 @@ public class FighterAI : MonoBehaviour
     void MoveTowardsPlayer() {
         Vector2 direction = (player.position - transform.position).normalized;
         float distance = Vector2.Distance(transform.position, player.position);
-        
+
         // Calculate ideal distance and speed multiplier based on state and difficulty
         float idealDistance = currentState == AIState.Attack ? attackRange * 0.6f : 
             attackRange * (1.1f - (int)aiDifficulty * 0.1f);
-        
+
         float speedMultiplier = 1f + ((int)aiDifficulty * 0.2f);
-        
+
         // Boost speed when far from ideal position
         float distanceFromIdeal = Mathf.Abs(distance - idealDistance);
         if (distanceFromIdeal > attackRange * 0.3f) {
             speedMultiplier *= 1.5f;
         }
-        
+
         // Add quick bursts of speed for higher difficulties
         if (aiDifficulty >= Difficulty.Hard && Random.value < 0.2f) {
             speedMultiplier *= 1.3f;
         }
 
         float currentSpeed = moveSpeed * speedMultiplier;
-        
+
         // More direct movement with less variation
         Vector2 moveDirection = direction;
         if (currentState == AIState.Attack && distanceFromIdeal < attackRange * 0.2f) {
@@ -212,7 +212,7 @@ public class FighterAI : MonoBehaviour
             lastMoveTime = Time.time;
             return false;
         }
-        
+
         // Calculate escape time based on difficulty (4f - difficulty * 0.5f)
         float escapeTime = 4f - ((int)aiDifficulty * 0.5f);
         return Time.time - lastMoveTime > escapeTime;
@@ -223,7 +223,7 @@ public class FighterAI : MonoBehaviour
         Vector2 direction = aiDifficulty >= Difficulty.Hard ? 
             (transform.position - player.position).normalized :
             new Vector2(Random.value > 0.5f ? 1 : -1, 0);
-        
+
         // Escape speed increases with difficulty
         float escapeSpeed = moveSpeed * (1.2f + ((int)aiDifficulty * 0.2f));
         rb.linearVelocity = new Vector2(direction.x * escapeSpeed, rb.linearVelocity.y);
@@ -238,14 +238,14 @@ public class FighterAI : MonoBehaviour
     void Attack() {
         float distance = Vector2.Distance(transform.position, player.position);
         float randomValue = Random.value;
-        
+
         // Calculate attack probabilities based on difficulty and distance
         float difficultyMultiplier = 0.6f + ((int)aiDifficulty * 0.1f);
         float proximityBonus = Mathf.Clamp(1f - (distance / attackRange), 0f, 0.5f);
-        
+
         float mainAttackProb = difficultyMultiplier + proximityBonus;
-        float kickProb = (difficultyMultiplier - 0.05f) + proximityBonus;
-        
+        float kickProb = difficultyMultiplier - 0.05f + proximityBonus;
+
         // Combo chance based on difficulty
         bool shouldTryCombo = Random.value < (0.15f + ((int)aiDifficulty * 0.15f));
 
