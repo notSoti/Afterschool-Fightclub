@@ -319,9 +319,7 @@ public class FighterAI : MonoBehaviour
 
 
     public void DisableHitbox() {
-        if (hitboxCollider != null)
-        {
-            // Debug.Log($"Disabling: {hitboxCollider.gameObject.name}");
+        if (hitboxCollider != null) {
             hitboxCollider.enabled = false;
         }
     }
