@@ -2002,7 +2002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcf980435b994b408cc05b892e04158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedCharacter: 1
+  selectedCharacter: 0
   characterPrefabs:
   - {fileID: 1189230928}
   - {fileID: 2010553660}
