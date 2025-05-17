@@ -31,6 +31,14 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(SpawnCharactersNextFrame());
     }
 
+    public void SetSelectedCharacter(CharacterChoice character) {
+        selectedCharacter = character;
+    }
+
+    public void SetAIDifficulty(FighterAI.Difficulty difficulty) {
+        aiDifficulty = difficulty;
+    }
+
     private void DisableOriginalCharacters() {
         var sceneFighters = FindObjectsByType<FighterAI>(FindObjectsSortMode.None);
         foreach (var fighter in sceneFighters) {
