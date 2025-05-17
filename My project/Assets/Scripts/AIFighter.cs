@@ -23,6 +23,8 @@ public class FighterAI : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private float speedMultiplier = 1f;
+
     void Start() {
         ultimate = GetComponent<UltimateAbility>();
         animator = GetComponent<Animator>();
@@ -155,20 +157,18 @@ public class FighterAI : MonoBehaviour
         float idealDistance = currentState == AIState.Attack ? attackRange * 0.6f : 
             attackRange * (1.1f - (int)aiDifficulty * 0.1f);
 
-        float speedMultiplier = 1f + ((int)aiDifficulty * 0.2f);
+        float currentSpeed = moveSpeed * speedMultiplier;
 
         // Boost speed when far from ideal position
         float distanceFromIdeal = Mathf.Abs(distance - idealDistance);
         if (distanceFromIdeal > attackRange * 0.3f) {
-            speedMultiplier *= 1.5f;
+            currentSpeed *= 1.5f;
         }
 
         // Add quick bursts of speed for higher difficulties
         if (aiDifficulty >= Difficulty.Hard && Random.value < 0.2f) {
-            speedMultiplier *= 1.3f;
+            currentSpeed *= 1.3f;
         }
-
-        float currentSpeed = moveSpeed * speedMultiplier;
 
         // More direct movement with less variation
         Vector2 moveDirection = direction;
@@ -334,5 +334,10 @@ public class FighterAI : MonoBehaviour
 
     public void OnMoveEnd() {
         CancelMove();
+    }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
     }
 }

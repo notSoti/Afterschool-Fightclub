@@ -46,7 +46,7 @@ public class Health : MonoBehaviour {
         if (amount <= 0 || isDead) return;
 
         currentHealth = Mathf.Max(0, currentHealth - amount);
-        Debug.Log($"{gameObject.name} took {amount} damage. Health remaining: {currentHealth}/{maxHealth}");
+        // Debug.Log($"{gameObject.name} took {amount} damage. Health remaining: {currentHealth}/{maxHealth}");
         onHealthChanged?.Invoke(currentHealth);
 
         if (currentHealth <= 0) {
@@ -67,7 +67,7 @@ public class Health : MonoBehaviour {
         isDead = true;
         onDeath?.Invoke();
 
-        Debug.Log($"{gameObject.name} has died!");
+        // Debug.Log($"{gameObject.name} has died!");
 
         try {
             SceneManager.LoadScene("VictoryScreen");

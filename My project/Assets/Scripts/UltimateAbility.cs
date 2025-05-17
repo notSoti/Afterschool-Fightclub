@@ -80,20 +80,20 @@ public class UltimateAbility : MonoBehaviour
         currentCharge = Mathf.Min(maxUltCharge, currentCharge + (damageDealt * 2.5f));
 
         float chargePercentage = currentCharge / maxUltCharge;
-        Debug.Log($"{gameObject.name}'s Ultimate charge: {Mathf.Floor(currentCharge)}/{maxUltCharge}");
+        // Debug.Log($"{gameObject.name}'s Ultimate charge: {Mathf.Floor(currentCharge)}/{maxUltCharge}");
         onChargeChanged?.Invoke(chargePercentage);
 
         if (currentCharge >= maxUltCharge && !isUltimateReady) {
             isUltimateReady = true;
             onUltimateReady?.Invoke();
-            Debug.Log($"{gameObject.name}'s Ultimate is ready!");
+            // Debug.Log($"{gameObject.name}'s Ultimate is ready!");
         }
     }
 
     public void UseUltimate() {
         if (!isUltimateReady) return;
 
-        Debug.Log($"{gameObject.name} used their Ultimate!");
+        // Debug.Log($"{gameObject.name} used their Ultimate!");
         onUltimateUsed?.Invoke();
         
         // Set animator parameter

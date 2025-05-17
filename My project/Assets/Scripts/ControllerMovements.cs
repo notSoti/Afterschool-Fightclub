@@ -126,7 +126,7 @@ public class ControllerMovements : MonoBehaviour {
     }
 
     public void EnableHitbox() {
-        Debug.Log($"Enabling hitbox for {gameObject.name}");
+        // Debug.Log($"Enabling hitbox for {gameObject.name}");
         if (hitboxCollider != null) {
             hitboxCollider.enabled = true;
 
@@ -138,7 +138,7 @@ public class ControllerMovements : MonoBehaviour {
 
 
     public void DisableHitbox() {
-        Debug.Log($"Disabling hitbox for {gameObject.name}");
+        // Debug.Log($"Disabling hitbox for {gameObject.name}");
         if (hitboxCollider != null && hitboxCollider != GetComponent<Collider2D>()) {
             hitboxCollider.enabled = false;
         }
