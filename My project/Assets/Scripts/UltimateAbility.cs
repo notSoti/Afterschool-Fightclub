@@ -102,15 +102,13 @@ public class UltimateAbility : MonoBehaviour
         // Execute character-specific ultimate ability
         if (name.Contains("Tsuki")) {
             // Tsuki's ultimate: Deal damage to enemy
-            if (enemyHealth != null)
-            {
+            if (enemyHealth != null) {
                 enemyHealth.TakeDamage(ultimateDamage);
             }
         }
         else if (name.Contains("Mihu")) {
             // Mihu's ultimate: Heal self
-            if (ownerHealth != null)
-            {
+            if (ownerHealth != null) {
                 ownerHealth.Heal(ultimateHealAmount);
             }
         }
