@@ -5,11 +5,16 @@ using UnityEngine.UI;
 public class UltimateAbility : MonoBehaviour
 {    
     [SerializeField] private float maxUltCharge = 100f;
+    [SerializeField] private int ultimateDamage = 20;
+    [SerializeField] private int ultimateHealAmount = 20;
 
     private float currentCharge;
     private bool isUltimateReady;
     private bool isPlayer;
     private Image ultBar;
+    private Health ownerHealth;
+    private Health enemyHealth;
+    private Animator animator;
 
     public UnityEvent<float> onChargeChanged; // Sends charge percentage (0-1)
     public UnityEvent onUltimateReady;
@@ -33,6 +38,33 @@ public class UltimateAbility : MonoBehaviour
         
         if (ultBar == null) {
             Debug.LogWarning($"Could not find ultimate bar '{barName}' for {gameObject.name}");
+        }
+
+        // Get components
+        ownerHealth = GetComponent<Health>();
+        animator = GetComponent<Animator>();
+
+        // Find the enemy's health component
+        string myName = gameObject.name;
+        string enemyName;
+        
+        // Determine the enemy's name based on our name
+        if (myName.Contains("_Player")) {
+            // If we're the player, look for the AI version
+            enemyName = myName.Replace("_Player", "_AI");
+        } else {
+            // If we're the AI, look for the player version
+            enemyName = myName.Replace("_AI", "_Player");
+        }
+
+        GameObject enemy = GameObject.Find(enemyName);
+        if (enemy != null) {
+            enemyHealth = enemy.GetComponent<Health>();
+            if (enemyHealth == null) {
+                Debug.LogError($"No Health component found on {enemyName}");
+            }
+        } else {
+            Debug.LogError($"Could not find {enemyName} object");
         }
     }
 
@@ -64,12 +96,30 @@ public class UltimateAbility : MonoBehaviour
         Debug.Log($"{gameObject.name} used their Ultimate!");
         onUltimateUsed?.Invoke();
         
+        // Set animator parameter
+        animator.SetBool("isUlting", true);
+
+        // Execute character-specific ultimate ability
+        if (name.Contains("Tsuki")) {
+            // Tsuki's ultimate: Deal damage to enemy
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(ultimateDamage);
+            }
+        }
+        else if (name.Contains("Mihu")) {
+            // Mihu's ultimate: Heal self
+            if (ownerHealth != null)
+            {
+                ownerHealth.Heal(ultimateHealAmount);
+            }
+        }
+        
         // Reset charge
         currentCharge = 0f;
         isUltimateReady = false;
+        animator.SetBool("isUlting", false);
         onChargeChanged?.Invoke(0f);
-
-        // TODO: Iadd ult logic here
     }
 
     public float GetChargePercentage() => currentCharge / maxUltCharge;
