@@ -721,7 +721,6 @@ RectTransform:
   m_Children:
   - {fileID: 2038568909}
   - {fileID: 1518059491}
-  - {fileID: 2035757850}
   - {fileID: 1994584318}
   - {fileID: 639688977}
   m_Father: {fileID: 471880187}
@@ -782,6 +781,7 @@ GameObject:
   - component: {fileID: 988380777}
   - component: {fileID: 988380779}
   - component: {fileID: 988380778}
+  - component: {fileID: 988380780}
   m_Layer: 5
   m_Name: NestBR
   m_TagString: Untagged
@@ -846,6 +846,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988380776}
   m_CullTransparentMesh: 1
+--- !u!114 &988380780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988380776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1186597733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1020,7 @@ GameObject:
   - component: {fileID: 1518059491}
   - component: {fileID: 1518059493}
   - component: {fileID: 1518059492}
+  - component: {fileID: 1518059494}
   m_Layer: 5
   m_Name: IconBR
   m_TagString: Untagged
@@ -1025,7 +1039,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 12.3127775, y: 12.3127775, z: 12.3127775}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2035757850}
   m_Father: {fileID: 928288205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1071,6 +1086,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518059490}
   m_CullTransparentMesh: 1
+--- !u!114 &1518059494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518059490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1964317817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,14 +1276,14 @@ RectTransform:
   m_GameObject: {fileID: 2035757849}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4741999, y: 1.4741999, z: 1.4741999}
+  m_LocalScale: {x: 0.11972928, y: 0.11972928, z: 0.11972928}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 928288205}
+  m_Father: {fileID: 1518059491}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -255, y: -0.000017166}
+  m_AnchoredPosition: {x: 2.71, y: -1.1}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2035757851
@@ -1307,6 +1335,7 @@ GameObject:
   - component: {fileID: 2038568909}
   - component: {fileID: 2038568911}
   - component: {fileID: 2038568910}
+  - component: {fileID: 2038568912}
   m_Layer: 5
   m_Name: F1HealthBR
   m_TagString: Untagged
@@ -1372,6 +1401,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038568908}
   m_CullTransparentMesh: 1
+--- !u!114 &2038568912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038568908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

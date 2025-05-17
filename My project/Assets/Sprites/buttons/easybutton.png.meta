@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8d316b9033fc0e84f85a63905d8fecd6
+guid: 89bf27da0e4f3434eb7a8c81bfe4450c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2649257032563600808
-    second: fatna_0
+      213: -3275951447990272631
+    second: easybutton_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fatna_0
+      name: easybutton_0
       rect:
         serializedVersion: 2
-        x: 315
-        y: 3
-        width: 396
-        height: 760
+        x: 0
+        y: 0
+        width: 1280
+        height: 800
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ada8a81c3d04c420800000000000000
-      internalID: 2649257032563600808
+      spriteID: 98dfc19c38b7982d0800000000000000
+      internalID: -3275951447990272631
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      fatna_0: 2649257032563600808
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

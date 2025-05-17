@@ -1,41 +1,33 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using System;
+using UnityEngine.EventSystems;
 
-
-public class NewMonoBehaviourScript : MonoBehaviour
+public class SelectionSceneButtons : MonoBehaviour
 {
-    public GameObject numberone;
-    public GameObject numbertwo;
-    public GameObject numberthree;
-    float time = -1;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    public void timesetter() {
-        time = 0;
+    public GameObject confirmcharacterbutton, difficultybutton;
+    public GameObject countdownscreen;
+    
+    public void ConfirmCharacter() {
+        confirmcharacterbutton.SetActive(false);
+        countdownscreen.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null); //unselect previous object
+        EventSystem.current.SetSelectedGameObject(difficultybutton);
     }
-    private void Update() {
-
-        if (time >= 0) {
-            time += Time.deltaTime;
-        }
-
-        if (Math.Floor(time) == 0) {
-            numberthree.SetActive(true);
-        }
-        if (Math.Floor(time) == 1) {
-            numberthree.SetActive(false);
-            numbertwo.SetActive(true);
-        }
-        if (Math.Floor(time) == 2) {
-            numbertwo.SetActive(false);
-            numberone.SetActive(true);
-        }
-        if (Math.Floor(time) == 3) {
-            numberone.SetActive(false);
-            time = -1;
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+    public void StartGame() { 
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void UnConfirmCharacter()
+    {
+        confirmcharacterbutton.SetActive(true);
+        countdownscreen.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null); //unselect previous object
+        EventSystem.current.SetSelectedGameObject(confirmcharacterbutton);
+    }
+
+    public void BackToMenu() {
+        SceneManager.LoadSceneAsync("Menu");
+    }
+
+ 
 }

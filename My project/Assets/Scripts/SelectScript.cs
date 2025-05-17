@@ -1,49 +1,77 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System;
+using Random = UnityEngine.Random;
+using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour
-{
-    public enum Character { Tsuki, Mihu };
+public class SelectionScript : MonoBehaviour
+{   
+    // select character script
+
+    public enum Character { Tsuki, Mihu};
+    [Header("--------Chosen Character--------")]
     public Character player;
-    
-    [SerializeField]
-    private GameObject tsukiObject;
-    [SerializeField]
-    private GameObject mihuObject;
+    // doesnt do anything if on difficulty object
 
-    void Start() {
-        player = (Character)Random.Range(0, 1); //default option
+    public enum Difficulty { Easy, Normal, Hard, Extreme};
+    [Header("---------Bot Difficulty---------")]
+    public Difficulty botdifficulty;
+    // doesnt do anything if on player object
+    [SerializeField]
+    private TMP_Text difftext;
+
+    void Start()
+    {
+        player = (Character)Random.Range(0, 2); //default option is random
+        SelectCharacter();
+        botdifficulty = Difficulty.Normal;
     }
 
-    void SelectChar1() {
+    public void SelectCharacter() {
+        // call GameManager function
+    }
+    public void SelectDifficulty() { 
+        // call game manager function
+    }
+
+    // --- Difficulty options ---
+    public void SelectEasy() {
+        botdifficulty = Difficulty.Easy;
+        SelectDifficulty();
+        difftext.text = "Current Difficulty: Easy";
+    }
+    public void SelectNormal() {
+        botdifficulty = Difficulty.Normal;
+        SelectDifficulty();
+        difftext.text = "Current Difficulty: Normal";
+    }
+    public void SelectHard() {
+        botdifficulty = Difficulty.Hard;
+        SelectDifficulty();
+        difftext.text = "Current Difficulty: Hard";
+    }
+    public void SelectExtreme() {
+        botdifficulty = Difficulty.Extreme;
+        SelectDifficulty();
+        difftext.text = "Current Difficulty: Extreme";
+    }
+
+
+    // --- Character options ---
+    public void SelectTsuki() {
         player = Character.Tsuki;
+        SelectCharacter();
     }
 
-    void SelectChar2() {
+    public void SelectMihu() {
         player = Character.Mihu;
+        SelectCharacter();
     }
 
-    void SelectChar3() {
-        player = (Character)Random.Range(0, 1);
+    public void SelectRandom() {
+        player = (Character)Random.Range(0, 2);
+        SelectCharacter();
     }
 
-    public Character GetP1() {
-        return player;
-    }
-
-    public void SetP1(Character newcharacter) {
-        player = newcharacter;
-    }
-
-    private void DestroyIrrelevantCharacters() {
-        if (tsukiObject == null || mihuObject == null) return;
-
-        switch (player) {
-            case Character.Tsuki:
-                Destroy(mihuObject);
-                break;
-            case Character.Mihu:
-                Destroy(tsukiObject);
-                break;
-        }
-    }
 }
