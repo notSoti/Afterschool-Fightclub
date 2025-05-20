@@ -2058,7 +2058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedPlayerCharacter: 0
-  selectedAICharacter: 0
+  selectedAICharacter: 1
   characterPrefabs:
   - {fileID: 1189230928}
   - {fileID: 2010553660}
