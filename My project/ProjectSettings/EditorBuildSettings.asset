@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Character Selection.unity
     guid: 9ce711435d7e9d84d8dd9166da42d101
   - enabled: 1
-    path: Assets/Scenes/moveTests.unity
+    path: Assets/Scenes/FightScene.unity
     guid: 93336984de367d547a8f030e774c7fee
   - enabled: 1
     path: Assets/Scenes/VictoryScreen.unity

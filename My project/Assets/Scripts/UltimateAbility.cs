@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System.Collections;
 
 public class UltimateAbility : MonoBehaviour
 {    
@@ -15,6 +16,7 @@ public class UltimateAbility : MonoBehaviour
     private Health ownerHealth;
     private Health enemyHealth;
     private Animator animator;
+    private GameObject enemyObject;
 
     public UnityEvent<float> onChargeChanged; // Sends charge percentage (0-1)
     public UnityEvent onUltimateReady;
@@ -44,27 +46,59 @@ public class UltimateAbility : MonoBehaviour
         ownerHealth = GetComponent<Health>();
         animator = GetComponent<Animator>();
 
-        // Find the enemy's health component
+        // The enemy might not be spawned yet when this script starts
+        // Wait until next frame to look for the enemy
+        StartCoroutine(FindEnemyNextFrame());
+    }
+
+    private IEnumerator FindEnemyNextFrame() {
+        yield return null; // Wait one frame to let other objects spawn
+
         string myName = gameObject.name;
-        string enemyName;
         
-        // Determine the enemy's name based on our name
-        if (myName.Contains("_Player")) {
-            // If we're the player, look for the AI version
-            enemyName = myName.Replace("_Player", "_AI");
+        // Make sure we have the base character name
+        string baseCharacterName;
+        if (myName.Contains("Tsuki")) {
+            baseCharacterName = "Tsuki";
+        } else if (myName.Contains("Mihu")) {
+            baseCharacterName = "Mihu";
         } else {
-            // If we're the AI, look for the player version
-            enemyName = myName.Replace("_AI", "_Player");
+            Debug.LogError($"Unknown character name: {myName}");
+            yield break;
         }
 
-        GameObject enemy = GameObject.Find(enemyName);
-        if (enemy != null) {
-            enemyHealth = enemy.GetComponent<Health>();
-            if (enemyHealth == null) {
-                Debug.LogError($"No Health component found on {enemyName}");
+        // Determine if we're the player or AI
+        isPlayer = myName.Contains("Player");
+        
+        // Find all possible opponents
+        GameObject[] allObjects = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        
+        // First try to find character of same type (for mirror matches)
+        foreach (GameObject obj in allObjects) {
+            if (obj != gameObject && // Not ourselves
+                obj.name.Contains(baseCharacterName) && // Same character type
+                (isPlayer ? obj.name.Contains("AI") : obj.name.Contains("Player"))) // Opposite player/AI status
+            {
+                enemyObject = obj;
+                break;
             }
-        } else {
-            Debug.LogError($"Could not find {enemyName} object");
+        }
+
+        // If no same-character opponent found, look for any character
+        if (enemyObject == null) {
+            foreach (GameObject obj in allObjects) {
+                if (obj != gameObject && // Not ourselves
+                    (obj.name.Contains("Tsuki") || obj.name.Contains("Mihu")) && // Is a character
+                    (isPlayer ? obj.name.Contains("AI") : obj.name.Contains("Player"))) // Opposite player/AI status
+                {
+                    enemyObject = obj;
+                    break;
+                }
+            }
+        }
+
+        if (enemyObject != null) {
+            enemyHealth = enemyObject.GetComponent<Health>();
         }
     }
 
@@ -80,20 +114,17 @@ public class UltimateAbility : MonoBehaviour
         currentCharge = Mathf.Min(maxUltCharge, currentCharge + (damageDealt * 2.5f));
 
         float chargePercentage = currentCharge / maxUltCharge;
-        // Debug.Log($"{gameObject.name}'s Ultimate charge: {Mathf.Floor(currentCharge)}/{maxUltCharge}");
         onChargeChanged?.Invoke(chargePercentage);
 
         if (currentCharge >= maxUltCharge && !isUltimateReady) {
             isUltimateReady = true;
             onUltimateReady?.Invoke();
-            // Debug.Log($"{gameObject.name}'s Ultimate is ready!");
         }
     }
 
     public void UseUltimate() {
         if (!isUltimateReady) return;
 
-        // Debug.Log($"{gameObject.name} used their Ultimate!");
         onUltimateUsed?.Invoke();
         
         // Set animator parameter
