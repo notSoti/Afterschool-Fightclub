@@ -7,9 +7,10 @@ using TMPro;
 
 public class SelectionScript : MonoBehaviour
 {   
+    private GameManager gameManager;
     // select character script
 
-    public enum Character { Tsuki, Mihu};
+    public enum Character { Tsuki, Mihu };
     [Header("--------Chosen Character--------")]
     public Character player;
     // doesnt do anything if on difficulty object
@@ -23,16 +24,24 @@ public class SelectionScript : MonoBehaviour
 
     void Start()
     {
+        gameManager = FindFirstObjectByType<GameManager>();
         player = (Character)Random.Range(0, 2); //default option is random
         SelectCharacter();
         botdifficulty = Difficulty.Normal;
+        SelectDifficulty();
     }
 
     public void SelectCharacter() {
-        // call GameManager function
+        if (gameManager != null) {
+            GameManager.CharacterChoice choice = (GameManager.CharacterChoice)player;
+            gameManager.SetSelectedCharacter(choice, false);
+        }
     }
     public void SelectDifficulty() { 
-        // call game manager function
+        if (gameManager != null) {
+            FighterAI.Difficulty aiFifficulty = (FighterAI.Difficulty)botdifficulty;
+            gameManager.SetAIDifficulty(aiFifficulty);
+        }
     }
 
     // --- Difficulty options ---
