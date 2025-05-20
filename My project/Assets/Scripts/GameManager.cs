@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour {
     }
 
     [Header("Character Selection")]
-    public CharacterChoice selectedCharacter = CharacterChoice.Tsuki;
+    public CharacterChoice selectedPlayerCharacter = CharacterChoice.Tsuki;
+    public CharacterChoice selectedAICharacter = CharacterChoice.Mihu;
 
     [Header("Character Prefabs")]
     public GameObject[] characterPrefabs; // Element 0 = Tsuki, Element 1 = Mihu
@@ -31,8 +32,12 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(SpawnCharactersNextFrame());
     }
 
-    public void SetSelectedCharacter(CharacterChoice character) {
-        selectedCharacter = character;
+    public void SetSelectedCharacter(CharacterChoice character, bool isAI = false) {
+        if (isAI) {
+            selectedAICharacter = character;
+        } else {
+            selectedPlayerCharacter = character;
+        }
     }
 
     public void SetAIDifficulty(FighterAI.Difficulty difficulty) {
@@ -60,16 +65,17 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        // Get the selected character prefab
-        int characterIndex = (int)selectedCharacter;
-        if (characterIndex >= characterPrefabs.Length) {
-            Debug.LogError($"Prefab not found for character: {selectedCharacter}");
+        // Get the selected character prefabs
+        int playerCharacterIndex = (int)selectedPlayerCharacter;
+        int aiCharacterIndex = (int)selectedAICharacter;
+        if (playerCharacterIndex >= characterPrefabs.Length || aiCharacterIndex >= characterPrefabs.Length) {
+            Debug.LogError("Prefab not found for selected character!");
             return;
         }
 
         // Spawn player character
-        GameObject player = Instantiate(characterPrefabs[characterIndex], playerSpawnPosition, Quaternion.identity);
-        player.name = $"{selectedCharacter}_Player";
+        GameObject player = Instantiate(characterPrefabs[playerCharacterIndex], playerSpawnPosition, Quaternion.identity);
+        player.name = $"{selectedPlayerCharacter}_Player";
         
         // Set up player-specific components
         if (player.TryGetComponent<FighterAI>(out var playerAI)) {
@@ -85,8 +91,8 @@ public class GameManager : MonoBehaviour {
         player.SetActive(true);
 
         // Spawn AI character
-        GameObject ai = Instantiate(characterPrefabs[characterIndex], aiSpawnPosition, Quaternion.identity);
-        ai.name = $"{selectedCharacter}_AI";
+        GameObject ai = Instantiate(characterPrefabs[aiCharacterIndex], aiSpawnPosition, Quaternion.identity);
+        ai.name = $"{selectedAICharacter}_AI";
         
         // Configure the AI
         if (ai.TryGetComponent<FighterAI>(out var fighterAI)) {
