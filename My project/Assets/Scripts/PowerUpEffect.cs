@@ -4,12 +4,11 @@ public class PowerUpEffect : MonoBehaviour
 {
     public enum PowerUpType
     {
-        Heal,           // +30 HP
-        UltCharge,      // +50% Ult charge
+        Heal,           // +20 HP
+        Damage,         // -20 HP
+        UltCharge,      // +20% Ult charge
+        UltDrain,       // -20% Ult charge
         SpeedBoost,     // Temporary speed increase
-        Damage,         // -30 HP
-        UltDrain,       // -50% Ult charge
-        SpeedDebuff     // Temporary speed decrease
     }
 
     public PowerUpType type;
@@ -27,12 +26,22 @@ public class PowerUpEffect : MonoBehaviour
         {
             case PowerUpType.Heal:
                 if (health != null)
-                    health.Heal(30);
+                    health.Heal(20);
+                break;
+
+            case PowerUpType.Damage:
+                if (health != null)
+                    health.TakeDamage(20);
                 break;
 
             case PowerUpType.UltCharge:
                 if (ultimate != null)
-                    ultimate.AddCharge(50);
+                    ultimate.AddCharge(20);
+                break;
+
+            case PowerUpType.UltDrain:
+                if (ultimate != null)
+                    ultimate.AddCharge(-20);
                 break;
 
             case PowerUpType.SpeedBoost:
@@ -40,24 +49,6 @@ public class PowerUpEffect : MonoBehaviour
                     StartCoroutine(ApplySpeedEffect(movement, speedMultiplier));
                 else if (ai != null)
                     StartCoroutine(ApplyAISpeedEffect(ai, speedMultiplier));
-                break;
-
-            case PowerUpType.Damage:
-                if (health != null)
-                    health.TakeDamage(30);
-                break;
-
-            case PowerUpType.UltDrain:
-                if (ultimate != null)
-                    ultimate.AddCharge(-50);
-                break;
-
-            case PowerUpType.SpeedDebuff:
-                break;
-                if (movement != null)
-                    StartCoroutine(ApplySpeedEffect(movement, 0.5f));
-                else if (ai != null)
-                    StartCoroutine(ApplyAISpeedEffect(ai, 0.5f));
                 break;
         }
     }
