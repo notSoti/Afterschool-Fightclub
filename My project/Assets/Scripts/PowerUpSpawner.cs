@@ -1,10 +1,10 @@
 using UnityEngine;
 
 public class PowerUpSpawner : MonoBehaviour
-{    
+{
     [Header("Spawn Settings")]
-    public float minSpawnInterval = 5f;
-    public float maxSpawnInterval = 15f;
+    public float spawnInterval = 13f;  // Fixed 10 second interval
+    public float spawnChance = 0.5f;   // 50% chance to spawn
     public float spawnHeight = 5f;
     public float spawnWidth = 6f; // How far to the left and right of center to spawn
 
@@ -30,14 +30,17 @@ public class PowerUpSpawner : MonoBehaviour
     {
         if (Time.time >= nextSpawnTime)
         {
-            SpawnPowerUp();
+            if (Random.value < spawnChance)
+            {
+                SpawnPowerUp();
+            }
             SetNextSpawnTime();
         }
     }
 
     void SetNextSpawnTime()
     {
-        nextSpawnTime = Time.time + Random.Range(minSpawnInterval, maxSpawnInterval);
+        nextSpawnTime = Time.time + spawnInterval;
     }
 
     void SpawnPowerUp()
@@ -56,7 +59,7 @@ public class PowerUpSpawner : MonoBehaviour
 
         PowerUpEffect effect = powerUp.GetComponent<PowerUpEffect>();
         SpriteRenderer renderer = powerUp.GetComponent<SpriteRenderer>();
-        
+
         PowerUpEffect.PowerUpType type = (PowerUpEffect.PowerUpType)Random.Range(0, 6);
         effect.type = type;
 
