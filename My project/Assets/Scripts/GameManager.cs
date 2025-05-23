@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         // Find the camera target in the scene
         cameraTarget = FindFirstObjectByType<CameraTarget>();
-        if (cameraTarget == null)
+        if (cameraTarget == null && SceneManager.GetActiveScene().name == "FightScene")
         {
             Debug.LogError("No CameraTarget found in the Fight scene!");
             yield break;
