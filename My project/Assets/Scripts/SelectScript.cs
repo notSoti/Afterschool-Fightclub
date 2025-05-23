@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections;
-using System;
 using Random = UnityEngine.Random;
 using TMPro;
 
