@@ -71,7 +71,7 @@ public class UltimateAbility : MonoBehaviour
         isPlayer = myName.Contains("Player");
         
         // Find all possible opponents
-        GameObject[] allObjects = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
         
         // First try to find character of same type (for mirror matches)
         foreach (GameObject obj in allObjects) {
