@@ -13,11 +13,10 @@ public class PowerUpSpawner : MonoBehaviour
 
     [Header("Power-up Icons")]
     public Sprite healSprite;
-    public Sprite ultChargeSprite;
-    public Sprite speedBoostSprite;
     public Sprite damageSprite;
+    public Sprite ultChargeSprite;
     public Sprite ultDrainSprite;
-    public Sprite speedDebuffSprite;
+    public Sprite speedBoostSprite;
 
     private float nextSpawnTime;
 
