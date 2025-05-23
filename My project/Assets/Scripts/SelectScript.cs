@@ -27,18 +27,11 @@ public class SelectionScript : MonoBehaviour
             Debug.LogError("GameManager instance not found!");
             return;
         }
-
-        // Update UI to reflect current settings
-        UpdateDifficultyText();
     }
 
-    private void UpdateDifficultyText()
+    private void UpdateDifficultyText(string difficultyName)
     {
-        if (difftext != null)
-        {
-            string difficultyName = gameManager.aiDifficulty.ToString();
-            difftext.text = $"Current Difficulty: {difficultyName}";
-        }
+        difftext.text = $"Current Difficulty: {difficultyName}";
     }
 
     public void SelectCharacter()
@@ -63,25 +56,25 @@ public class SelectionScript : MonoBehaviour
     {
         botdifficulty = Difficulty.Easy;
         SelectDifficulty();
-        difftext.text = "Current Difficulty: Easy";
+        UpdateDifficultyText("Easy");
     }
     public void SelectNormal()
     {
         botdifficulty = Difficulty.Normal;
         SelectDifficulty();
-        difftext.text = "Current Difficulty: Normal";
+        UpdateDifficultyText("Normal");
     }
     public void SelectHard()
     {
         botdifficulty = Difficulty.Hard;
         SelectDifficulty();
-        difftext.text = "Current Difficulty: Hard";
+        UpdateDifficultyText("Hard");
     }
     public void SelectExtreme()
     {
         botdifficulty = Difficulty.Extreme;
         SelectDifficulty();
-        difftext.text = "Current Difficulty: Extreme";
+        UpdateDifficultyText("Extreme");
     }
 
 

@@ -10,37 +10,25 @@ public class AudioManager : MonoBehaviour
     public static float SFXValue;
 
     [Header("----------- Audio Clip -----------")]
-    public AudioClip backround1; //main menu music
-    public AudioClip backround2; //character selection music (temp victory music)
-    public AudioClip backround3; // main game backround music
+    public AudioClip backround; //backround music, changes on each scene analoga ti ekxorisa sto AudioManager ekeinhs ths skhnhs
     public AudioClip hurt;
     public AudioClip death;
-    public AudioClip specialbell; // special ability is available
-
+    public AudioClip specialbell; // notifies when special ability is available
+    public AudioClip powerupring; // your phone linging, ling-ling-ling (notifies when powerup is picked-up)
+    public AudioClip tsukipower;
+    public AudioClip mihupower;
+    public AudioClip victorysound;
+    public AudioClip defeatsound;
 
     private void Start()
     {
-        switch (SceneManager.GetActiveScene().buildIndex) // select sound pou 8a pextei, analoga scene
-        {
-            case 0:
-                musicSource.clip = backround1; 
-                break;
-
-            case 1:
-                musicSource.clip = backround2;
-                break;
-
-            case 2:
-                musicSource.clip = backround3;
-                break;
-
-            case 3:
-                musicSource.clip = backround2;
-                break;
-        }
+        musicSource.clip = backround; // select sound na paijei
         musicSource.Play(); // play selected sound
     }
-
+    public void TestSFX() // test hxos gia to menu
+    {
+        SFXSource.PlayOneShot(specialbell);
+    }
     public void PlaySFX(AudioClip clip) // audioclip is type object
     {
         SFXSource.PlayOneShot(clip);

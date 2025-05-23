@@ -1,2 +1,22 @@
 fileFormatVersion: 2
 guid: faf15c17662dd3e42a61c4f76e42e044
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - musicSource: {instanceID: 0}
+  - SFXSource: {instanceID: 0}
+  - backround: {instanceID: 0}
+  - hurt: {instanceID: 0}
+  - death: {instanceID: 0}
+  - specialbell: {instanceID: 0}
+  - powerupring: {instanceID: 0}
+  - tsukipower: {instanceID: 0}
+  - mihupower: {instanceID: 0}
+  - victorysound: {instanceID: 0}
+  - defeatsound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
