@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 2993909394581163252}
   - component: {fileID: 7615918782127710701}
   - component: {fileID: 4879212384918377982}
+  - component: {fileID: 1578010366950448008}
   m_Layer: 6
   m_Name: Tsuki
   m_TagString: Player
@@ -480,6 +481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUltCharge: 100
+  ultimateDamage: 20
+  ultimateHealAmount: 20
   onChargeChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -489,3 +492,19 @@ MonoBehaviour:
   onUltimateUsed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1578010366950448008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007265834048255607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122333ea6dcd4794dbd378b0abcb69db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDifficulty: 1
+  player: {fileID: 0}
+  freeze: 1
+  hitboxCollider: {fileID: 0}

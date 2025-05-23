@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 using TMPro;
 
 public class SelectionScript : MonoBehaviour
-{   
+{
     private GameManager gameManager;
     // select character script
 
@@ -15,7 +15,7 @@ public class SelectionScript : MonoBehaviour
     public Character player;
     // doesnt do anything if on difficulty object
 
-    public enum Difficulty { Easy, Normal, Hard, Extreme};
+    public enum Difficulty { Easy, Normal, Hard, Extreme };
     [Header("---------Bot Difficulty---------")]
     public Difficulty botdifficulty;
     // doesnt do anything if on player object
@@ -24,43 +24,64 @@ public class SelectionScript : MonoBehaviour
 
     void Start()
     {
-        gameManager = FindFirstObjectByType<GameManager>();
-        player = (Character)Random.Range(0, 2); //default option is random
-        SelectCharacter();
-        botdifficulty = Difficulty.Normal;
-        SelectDifficulty();
+        gameManager = GameManager.Instance;
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager instance not found!");
+            return;
+        }
+
+        // Update UI to reflect current settings
+        UpdateDifficultyText();
     }
 
-    public void SelectCharacter() {
-        if (gameManager != null) {
+    private void UpdateDifficultyText()
+    {
+        if (difftext != null)
+        {
+            string difficultyName = gameManager.aiDifficulty.ToString();
+            difftext.text = $"Current Difficulty: {difficultyName}";
+        }
+    }
+
+    public void SelectCharacter()
+    {
+        if (gameManager != null)
+        {
             GameManager.CharacterChoice choice = (GameManager.CharacterChoice)player;
             gameManager.SetSelectedCharacter(choice, false);
         }
     }
-    public void SelectDifficulty() { 
-        if (gameManager != null) {
+    public void SelectDifficulty()
+    {
+        if (gameManager != null)
+        {
             FighterAI.Difficulty aiFifficulty = (FighterAI.Difficulty)botdifficulty;
             gameManager.SetAIDifficulty(aiFifficulty);
         }
     }
 
     // --- Difficulty options ---
-    public void SelectEasy() {
+    public void SelectEasy()
+    {
         botdifficulty = Difficulty.Easy;
         SelectDifficulty();
         difftext.text = "Current Difficulty: Easy";
     }
-    public void SelectNormal() {
+    public void SelectNormal()
+    {
         botdifficulty = Difficulty.Normal;
         SelectDifficulty();
         difftext.text = "Current Difficulty: Normal";
     }
-    public void SelectHard() {
+    public void SelectHard()
+    {
         botdifficulty = Difficulty.Hard;
         SelectDifficulty();
         difftext.text = "Current Difficulty: Hard";
     }
-    public void SelectExtreme() {
+    public void SelectExtreme()
+    {
         botdifficulty = Difficulty.Extreme;
         SelectDifficulty();
         difftext.text = "Current Difficulty: Extreme";
@@ -68,17 +89,20 @@ public class SelectionScript : MonoBehaviour
 
 
     // --- Character options ---
-    public void SelectTsuki() {
+    public void SelectTsuki()
+    {
         player = Character.Tsuki;
         SelectCharacter();
     }
 
-    public void SelectMihu() {
+    public void SelectMihu()
+    {
         player = Character.Mihu;
         SelectCharacter();
     }
 
-    public void SelectRandom() {
+    public void SelectRandom()
+    {
         player = (Character)Random.Range(0, 2);
         SelectCharacter();
     }

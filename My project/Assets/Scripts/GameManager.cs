@@ -1,7 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class GameManager : MonoBehaviour {
-    public enum CharacterChoice {
+public class GameManager : MonoBehaviour
+{
+    // Singleton instance
+    public static GameManager Instance { get; private set; }
+
+    public enum CharacterChoice
+    {
         Tsuki,
         Mihu
     }
@@ -19,73 +26,135 @@ public class GameManager : MonoBehaviour {
 
     [Header("AI Settings")]
     public FighterAI.Difficulty aiDifficulty = FighterAI.Difficulty.Normal;
-    private readonly FighterAI[] originalAIs;
 
     [Header("Camera")]
     public CameraTarget cameraTarget; // Assign this in inspector
 
-    void Start() {
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else // this bare else might cause issues elsewhere, idk
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "Character Selection")
+        {
+            StartCoroutine(InitializeFightScene());
+        }
+    }
+
+    private IEnumerator InitializeFightScene()
+    {
+        yield return null; // Wait one frame
+
+        // Find the camera target in the scene
+        cameraTarget = FindFirstObjectByType<CameraTarget>();
+        if (cameraTarget == null)
+        {
+            Debug.LogError("No CameraTarget found in the Fight scene!");
+            yield break;
+        }
+
+        if (characterPrefabs == null || characterPrefabs.Length == 0)
+        {
+            Debug.LogError("No character prefabs found!");
+            yield break;
+        }
+
         // Disable original characters first
         DisableOriginalCharacters();
 
-        // Wait a frame before spawning new characters
-        StartCoroutine(SpawnCharactersNextFrame());
+        // Spawn new characters
+        SpawnCharacters();
     }
 
-    public void SetSelectedCharacter(CharacterChoice character, bool isAI = false) {
-        if (isAI) {
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Character Selection")
+        {
+            // Set default random player character
+            selectedPlayerCharacter = (CharacterChoice)Random.Range(0, 2);
+            selectedAICharacter = (CharacterChoice)Random.Range(0, 2);
+            aiDifficulty = FighterAI.Difficulty.Normal;
+        }
+    }
+
+    public void SetSelectedCharacter(CharacterChoice character, bool isAI = false)
+    {
+        if (isAI)
+        {
             selectedAICharacter = character;
-        } else {
+        }
+        else
+        {
             selectedPlayerCharacter = character;
         }
     }
 
-    public void SetAIDifficulty(FighterAI.Difficulty difficulty) {
+    public void SetAIDifficulty(FighterAI.Difficulty difficulty)
+    {
         aiDifficulty = difficulty;
     }
 
-    private void DisableOriginalCharacters() {
+    private void DisableOriginalCharacters()
+    {
         var sceneFighters = FindObjectsByType<FighterAI>(FindObjectsSortMode.None);
-        foreach (var fighter in sceneFighters) {
-            if (!fighter.gameObject.name.Contains("(Clone)")) {
+        foreach (var fighter in sceneFighters)
+        {
+            if (!fighter.gameObject.name.Contains("(Clone)"))
+            {
                 fighter.gameObject.SetActive(false);
             }
         }
     }
 
-    private System.Collections.IEnumerator SpawnCharactersNextFrame() {
+    private IEnumerator SpawnCharactersNextFrame()
+    {
         yield return null; // Wait one frame otherwise they spawn disabled
         SpawnCharacters();
     }
 
-    void SpawnCharacters() {
-        // Check if we have valid prefabs
-        if (characterPrefabs == null || characterPrefabs.Length == 0) {
-            Debug.LogError("Character prefabs not assigned in GameManager!");
-            return;
-        }
+    void SpawnCharacters()
+    {
 
         // Get the selected character prefabs
         int playerCharacterIndex = (int)selectedPlayerCharacter;
         int aiCharacterIndex = (int)selectedAICharacter;
-        if (playerCharacterIndex >= characterPrefabs.Length || aiCharacterIndex >= characterPrefabs.Length) {
-            Debug.LogError("Prefab not found for selected character!");
-            return;
-        }
 
         // Spawn player character
         GameObject player = Instantiate(characterPrefabs[playerCharacterIndex], playerSpawnPosition, Quaternion.identity);
         player.name = $"{selectedPlayerCharacter}_Player";
-        
+
         // Set up player-specific components
-        if (player.TryGetComponent<FighterAI>(out var playerAI)) {
+        if (player.TryGetComponent<FighterAI>(out var playerAI))
+        {
             playerAI.enabled = false;
         }
-        if (player.TryGetComponent<ControllerMovements>(out var playerControls)) {
+        if (player.TryGetComponent<ControllerMovements>(out var playerControls))
+        {
             playerControls.enabled = true;
         }
         // Ensure hitbox is disabled at spawn
-        if (player.transform.Find("Player Hitbox").GetComponent<Collider2D>() is Collider2D hitbox) {
+        if (player.transform.Find("Player Hitbox").GetComponent<Collider2D>() is Collider2D hitbox)
+        {
             hitbox.enabled = false;
         }
         player.SetActive(true);
@@ -93,21 +162,20 @@ public class GameManager : MonoBehaviour {
         // Spawn AI character
         GameObject ai = Instantiate(characterPrefabs[aiCharacterIndex], aiSpawnPosition, Quaternion.identity);
         ai.name = $"{selectedAICharacter}_AI";
-        
+
         // Configure the AI
-        if (ai.TryGetComponent<FighterAI>(out var fighterAI)) {
+        if (ai.TryGetComponent<FighterAI>(out var fighterAI))
+        {
             fighterAI.enabled = true;
             fighterAI.aiDifficulty = aiDifficulty;
             fighterAI.player = player.transform;
             fighterAI.freeze = false;
         }
-        else {
-            Debug.LogWarning("FighterAI component not found on AI character prefab!");
-        }
         ai.SetActive(true);
 
         // Set up camera target
-        if (cameraTarget != null) {
+        if (cameraTarget != null)
+        {
             cameraTarget.player1 = player.transform;
             cameraTarget.player2 = ai.transform;
         }

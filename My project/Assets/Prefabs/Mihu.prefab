@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 2757001033289166723}
   - component: {fileID: 3109847207317811288}
   - component: {fileID: 4735464423828990351}
+  - component: {fileID: 1089696296378694816}
   m_Layer: 6
   m_Name: Mihu
   m_TagString: Player
@@ -326,7 +327,6 @@ MonoBehaviour:
   jumpForce: 7
   mainAttackCooldown: 1
   kickCooldown: 0.7
-  hitboxCollider: {fileID: 2200010122321622171}
 --- !u!114 &3109847207317811288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +347,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  healthBar: {fileID: 0}
 --- !u!114 &4735464423828990351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUltCharge: 100
+  ultimateDamage: 20
+  ultimateHealAmount: 20
   onChargeChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -370,7 +371,22 @@ MonoBehaviour:
   onUltimateUsed:
     m_PersistentCalls:
       m_Calls: []
-  ultBar: {fileID: 0}
+--- !u!114 &1089696296378694816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5847910595390957194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122333ea6dcd4794dbd378b0abcb69db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiDifficulty: 1
+  player: {fileID: 0}
+  freeze: 1
+  hitboxCollider: {fileID: 0}
 --- !u!1 &8142998282580612555
 GameObject:
   m_ObjectHideFlags: 0
