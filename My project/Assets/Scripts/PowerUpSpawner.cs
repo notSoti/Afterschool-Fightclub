@@ -63,11 +63,10 @@ public class PowerUpSpawner : MonoBehaviour
         renderer.sprite = type switch
         {
             PowerUpEffect.PowerUpType.Heal => healSprite,
-            PowerUpEffect.PowerUpType.UltCharge => ultChargeSprite,
-            PowerUpEffect.PowerUpType.SpeedBoost => speedBoostSprite,
             PowerUpEffect.PowerUpType.Damage => damageSprite,
+            PowerUpEffect.PowerUpType.UltCharge => ultChargeSprite,
             PowerUpEffect.PowerUpType.UltDrain => ultDrainSprite,
-            PowerUpEffect.PowerUpType.SpeedDebuff => speedDebuffSprite,
+            PowerUpEffect.PowerUpType.SpeedBoost => speedBoostSprite,
             _ => renderer.sprite
         };
         renderer.color = Color.white;
