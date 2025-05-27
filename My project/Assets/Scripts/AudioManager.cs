@@ -27,7 +27,7 @@ public class AudioManager : MonoBehaviour
     }
     public void TestSFX() // test hxos gia to menu
     {
-        SFXSource.PlayOneShot(specialbell);
+        PlaySFX(specialbell);
     }
     public void PlaySFX(AudioClip clip) // audioclip is type object
     {

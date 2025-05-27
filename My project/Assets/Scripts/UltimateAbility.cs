@@ -8,6 +8,7 @@ public class UltimateAbility : MonoBehaviour
     [SerializeField] private float maxUltCharge = 100f;
     [SerializeField] private int ultimateDamage = 20;
     [SerializeField] private int ultimateHealAmount = 20;
+    [SerializeField] public AudioManager audioManager;
 
     private float currentCharge;
     private bool isUltimateReady;
@@ -117,6 +118,7 @@ public class UltimateAbility : MonoBehaviour
         onChargeChanged?.Invoke(chargePercentage);
 
         if (currentCharge >= maxUltCharge && !isUltimateReady) {
+            audioManager.PlaySFX(audioManager.specialbell);
             isUltimateReady = true;
             onUltimateReady?.Invoke();
         }
@@ -134,12 +136,14 @@ public class UltimateAbility : MonoBehaviour
         if (name.Contains("Tsuki")) {
             // Tsuki's ultimate: Deal damage to enemy
             if (enemyHealth != null) {
+                audioManager.PlaySFX(audioManager.tsukipower);
                 enemyHealth.TakeDamage(ultimateDamage);
             }
         }
         else if (name.Contains("Mihu")) {
             // Mihu's ultimate: Heal self
             if (ownerHealth != null) {
+                audioManager.PlaySFX(audioManager.mihupower);
                 ownerHealth.Heal(ultimateHealAmount);
             }
         }

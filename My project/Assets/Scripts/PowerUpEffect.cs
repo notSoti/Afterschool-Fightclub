@@ -14,9 +14,11 @@ public class PowerUpEffect : MonoBehaviour
     public PowerUpType type;
     public float duration = 5f;  // Duration for temporary effects (speed boost/debuff)
     public float speedMultiplier = 1.5f;  // For speed effects
+    [SerializeField] public AudioManager audioManager;
 
     public void ApplyEffect(GameObject target)
     {
+        // audioManager.PlaySFX(audioManager.powerupring);
         Health health = target.GetComponent<Health>();
         UltimateAbility ultimate = target.GetComponent<UltimateAbility>();
         ControllerMovements movement = target.GetComponent<ControllerMovements>();

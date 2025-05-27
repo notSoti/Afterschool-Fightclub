@@ -1,17 +1,20 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Linq;
+using System.Runtime.Serialization;
+using System;
 
 public class Health : MonoBehaviour {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
+    [SerializeField] public AudioManager audioManager;
 
     private bool isDead;
     private bool isPlayer;
     private Image healthBar;
+    public GameObject endGamePanel;
     
     // Cache the animation state hashes
     private static readonly int IdleState = Animator.StringToHash("idle");
@@ -28,22 +31,27 @@ public class Health : MonoBehaviour {
     public UnityEvent<int> onHealthChanged;
     public UnityEvent onDeath;
 
-    private void Start() {
+    private void Start()
+    {
         currentHealth = maxHealth;
         isPlayer = name.Contains("Player");
-        
+
+
         // Find the appropriate health bar based on whether this is a player or AI
         string barName = isPlayer ? "Player1HealthBar" : "Player2HealthBar";
         GameObject healthBarObj = GameObject.Find(barName);
-        if (healthBarObj != null) {
+        if (healthBarObj != null)
+        {
             healthBar = healthBarObj.GetComponent<Image>();
-            if (healthBar == null) {
+            if (healthBar == null)
+            {
                 // Try to find it as a child component
                 healthBar = healthBarObj.GetComponentInChildren<Image>();
             }
         }
-        
-        if (healthBar == null) {
+
+        if (healthBar == null)
+        {
             Debug.LogWarning($"Could not find health bar '{barName}' for {gameObject.name}");
         }
     }
@@ -60,10 +68,13 @@ public class Health : MonoBehaviour {
         if (amount <= 0 || isDead) return;
 
         currentHealth = Mathf.Max(0, currentHealth - amount);
+        audioManager.PlaySFX(audioManager.hurt);
         // Debug.Log($"{gameObject.name} took {amount} damage. Health remaining: {currentHealth}/{maxHealth}");
         onHealthChanged?.Invoke(currentHealth);
 
-        if (currentHealth <= 0) {
+        if (currentHealth <= 0)
+        {
+            audioManager.PlaySFX(audioManager.death);
             Die();
         }
     }
@@ -169,8 +180,9 @@ public class Health : MonoBehaviour {
     private IEnumerator LoadVictoryScreen() {
         // Wait for 3 seconds
         yield return new WaitForSeconds(3f);
-
-        SceneManager.LoadScene("VictoryScreen");
+        
+        audioManager.PlaySFX(audioManager.victorysound);
+        endGamePanel.SetActive(true);
     }
 
     public bool IsDead() => isDead;

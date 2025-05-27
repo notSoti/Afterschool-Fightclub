@@ -7,7 +7,7 @@ MonoImporter:
   - musicSource: {instanceID: 0}
   - SFXSource: {instanceID: 0}
   - backround: {instanceID: 0}
-  - hurt: {instanceID: 0}
+  - hurt: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
   - death: {instanceID: 0}
   - specialbell: {instanceID: 0}
   - powerupring: {instanceID: 0}
