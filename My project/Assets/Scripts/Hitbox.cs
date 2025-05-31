@@ -16,18 +16,21 @@ public class Hitbox : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         Hurtbox hurtbox = other.GetComponent<Hurtbox>();
-        if (hurtbox != null && hurtbox.owner != owner && !alreadyHit.Contains(hurtbox.owner)) {
+        if (hurtbox != null && hurtbox.owner != owner && !alreadyHit.Contains(hurtbox.owner))
+        {
             hurtbox.TakeDamage(damage);
             alreadyHit.Add(hurtbox.owner);
-            
+
             // Charge ultimate when dealing damage
             ultimateAbility.AddCharge(damage);
         }
     }
 
-    public void ResetHits() {
+    public void ResetHits()
+    {
         alreadyHit.Clear();
     }
 }

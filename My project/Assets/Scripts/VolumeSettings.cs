@@ -15,7 +15,7 @@ public class MyVolumeSettings : MonoBehaviour
             LoadVolume();
         }
         else // if player dont got their own volume input
-        { 
+        {
             SetMusicVolume();
             SetSFXVolume();
         }
@@ -29,7 +29,7 @@ public class MyVolumeSettings : MonoBehaviour
             // gotta jail the sliders in an IF cuz they dont exist in all scenes
         }
         float volume = AudioManager.musicValue;
-        myMixer.SetFloat("music", Mathf.Log10(volume)*20);
+        myMixer.SetFloat("music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume); // save music volume settings between game restarts
 
     }

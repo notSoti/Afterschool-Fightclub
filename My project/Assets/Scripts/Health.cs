@@ -6,7 +6,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour
+{
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
     [SerializeField] public AudioManager audioManager;
@@ -15,11 +16,11 @@ public class Health : MonoBehaviour {
     private bool isPlayer;
     private Image healthBar;
     public GameObject endGamePanel;
-    
+
     // Cache the animation state hashes
     private static readonly int IdleState = Animator.StringToHash("idle");
     private static readonly int DeathState = Animator.StringToHash("Death");
-    
+
     // Cache the animation parameter hashes
     private static readonly int JumpTrigger = Animator.StringToHash("Jump");
     private static readonly int MainAttackTrigger = Animator.StringToHash("Main Attack");
@@ -56,9 +57,10 @@ public class Health : MonoBehaviour {
         }
     }
 
-    private void Update() 
+    private void Update()
     {
-        if (healthBar != null) {
+        if (healthBar != null)
+        {
             healthBar.fillAmount = Mathf.Clamp(GetHealthPercentage(), 0, 1);
         }
     }
@@ -79,14 +81,16 @@ public class Health : MonoBehaviour {
         }
     }
 
-    public void Heal(int amount) {
+    public void Heal(int amount)
+    {
         if (amount <= 0 || isDead) return;
 
         currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
         onHealthChanged?.Invoke(currentHealth);
     }
 
-    private void Die() {
+    private void Die()
+    {
         if (isDead) return;
 
         isDead = true;
@@ -103,32 +107,39 @@ public class Health : MonoBehaviour {
         GameObject deadCharacter = this.gameObject;
         GameObject survivor = null;
 
-        foreach (var character in allCharacters) {
-            if (character != null && character.activeSelf && character != deadCharacter) {
+        foreach (var character in allCharacters)
+        {
+            if (character != null && character.activeSelf && character != deadCharacter)
+            {
                 survivor = character;
                 break;
             }
         }
 
-        if (survivor != null) {
+        if (survivor != null)
+        {
             // First stop all physics movement
-            if (survivor.TryGetComponent<Rigidbody2D>(out var rb)) {
+            if (survivor.TryGetComponent<Rigidbody2D>(out var rb))
+            {
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
                 rb.bodyType = RigidbodyType2D.Kinematic; // Ignore physics
             }
 
             // Then disable movement components
-            if (survivor.TryGetComponent<ControllerMovements>(out var playerMovement)) {
+            if (survivor.TryGetComponent<ControllerMovements>(out var playerMovement))
+            {
                 playerMovement.enabled = false;
             }
-            if (survivor.TryGetComponent<FighterAI>(out var aiComponent)) {
+            if (survivor.TryGetComponent<FighterAI>(out var aiComponent))
+            {
                 aiComponent.enabled = false;
                 aiComponent.freeze = true;
             }
 
             // Then handle animation
-            if (survivor.TryGetComponent<Animator>(out var survivorAnimator)) {
+            if (survivor.TryGetComponent<Animator>(out var survivorAnimator))
+            {
                 // First reset all parameters
                 survivorAnimator.ResetTrigger(JumpTrigger);
                 survivorAnimator.ResetTrigger(MainAttackTrigger);
@@ -136,7 +147,7 @@ public class Health : MonoBehaviour {
                 survivorAnimator.SetBool(IsCrouchingParam, false);
                 survivorAnimator.SetBool(IsKickingParam, false);
                 survivorAnimator.SetBool(IsAttackingParam, false);
-                
+
                 // Force into idle state
                 survivorAnimator.Rebind();
                 survivorAnimator.Update(0f);
@@ -146,27 +157,31 @@ public class Health : MonoBehaviour {
         }
 
         // Handle the dead character last
-        if (TryGetComponent<Rigidbody2D>(out var deadRb)) {
+        if (TryGetComponent<Rigidbody2D>(out var deadRb))
+        {
             deadRb.linearVelocity = Vector2.zero;
             deadRb.angularVelocity = 0f;
             deadRb.bodyType = RigidbodyType2D.Kinematic;
         }
-        
-        if (TryGetComponent<ControllerMovements>(out var deadMovement)) {
+
+        if (TryGetComponent<ControllerMovements>(out var deadMovement))
+        {
             deadMovement.enabled = false;
         }
-        if (TryGetComponent<FighterAI>(out var deadAI)) {
+        if (TryGetComponent<FighterAI>(out var deadAI))
+        {
             deadAI.enabled = false;
             deadAI.freeze = true;
         }
-        if (TryGetComponent<Animator>(out var animator)) {
+        if (TryGetComponent<Animator>(out var animator))
+        {
             animator.ResetTrigger(JumpTrigger);
             animator.ResetTrigger(MainAttackTrigger);
             animator.ResetTrigger(KickTrigger);
             animator.SetBool(IsCrouchingParam, false);
             animator.SetBool(IsKickingParam, false);
             animator.SetBool(IsAttackingParam, false);
-            
+
             animator.Rebind(); // This fully resets the animator
             animator.Update(0f);
             animator.Play(DeathState, 0, 0f);
@@ -177,10 +192,11 @@ public class Health : MonoBehaviour {
         StartCoroutine(LoadVictoryScreen());
     }
 
-    private IEnumerator LoadVictoryScreen() {
+    private IEnumerator LoadVictoryScreen()
+    {
         // Wait for 3 seconds
         yield return new WaitForSeconds(3f);
-        
+
         audioManager.PlaySFX(audioManager.victorysound);
         endGamePanel.SetActive(true);
     }

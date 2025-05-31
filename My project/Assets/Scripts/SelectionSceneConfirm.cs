@@ -6,14 +6,16 @@ public class SelectionSceneButtons : MonoBehaviour
 {
     public GameObject confirmcharacterbutton, difficultybutton;
     public GameObject countdownscreen;
-    
-    public void ConfirmCharacter() {
+
+    public void ConfirmCharacter()
+    {
         confirmcharacterbutton.SetActive(false);
         countdownscreen.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null); //unselect previous object
         EventSystem.current.SetSelectedGameObject(difficultybutton);
     }
-    public void StartGame() { 
+    public void StartGame()
+    {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -25,9 +27,10 @@ public class SelectionSceneButtons : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(confirmcharacterbutton);
     }
 
-    public void BackToMenu() {
+    public void BackToMenu()
+    {
         SceneManager.LoadSceneAsync("Menu");
     }
 
- 
+
 }

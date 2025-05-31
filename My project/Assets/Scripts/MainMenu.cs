@@ -4,14 +4,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.IO;
 
-public class MainMenu : MonoBehaviour {
-  
+public class MainMenu : MonoBehaviour
+{
+
     public GameObject mainMenu, optionsMenu, controlsPanel;
 
     public GameObject optionsFirstButton, optionsClosedButton, controlsFirstButton, controlsClosedButton;
 
 
-    public void PlayGame() {
+    public void PlayGame()
+    {
         if (Resources.Load<Sprite>("Triangle") == null && !File.Exists(Application.dataPath + "/Triangle.png"))
         {
             Application.OpenURL("https://youtube.com/watch?v=dQw4w9WgXcQ");
@@ -52,7 +54,8 @@ public class MainMenu : MonoBehaviour {
         EventSystem.current.SetSelectedGameObject(controlsClosedButton);
     }
 
-    public void QuitGame() {
+    public void QuitGame()
+    {
         Application.Quit();
         Debug.Log("Quitting");
     }

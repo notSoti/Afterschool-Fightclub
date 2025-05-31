@@ -33,12 +33,12 @@ public class PowerUp : MonoBehaviour
                 transform.position = position;
             }
         }
-        
+
         // Set up the physical collider for ground collision
         physicsCollider = gameObject.AddComponent<CircleCollider2D>();
         physicsCollider.isTrigger = false;
         physicsCollider.radius = 0.25f;
-        
+
         // Create a bouncy material for the collider
         var bouncyMaterial = new PhysicsMaterial2D("PowerUpBounce")
         {
@@ -61,7 +61,7 @@ public class PowerUp : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        
+
         // Make power-ups pass through each other
         gameObject.layer = LayerMask.NameToLayer("Default");
         Physics2D.IgnoreLayerCollision(gameObject.layer, gameObject.layer);
