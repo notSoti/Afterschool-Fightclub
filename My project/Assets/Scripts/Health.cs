@@ -3,8 +3,6 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
-using System.Runtime.Serialization;
-using System;
 
 public class Health : MonoBehaviour
 {
