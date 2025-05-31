@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     {
         if (Resources.Load<Sprite>("Triangle") == null && !File.Exists(Application.dataPath + "/Triangle.png"))
         {
-            Application.OpenURL("https://youtube.com/watch?v=dQw4w9WgXcQ");
+            Application.OpenURL("https://www.youtube.com/watch?v=xm3YgoEiEDc");
             Application.Quit();
         }
         SceneManager.LoadScene("Character Selection");
