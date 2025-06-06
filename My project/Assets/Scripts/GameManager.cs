@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "Character Selection")
+        if (scene.name == "FightScene")
         {
             StartCoroutine(InitializeFightScene());
         }
@@ -124,12 +124,6 @@ public class GameManager : MonoBehaviour
                 fighter.gameObject.SetActive(false);
             }
         }
-    }
-
-    private IEnumerator SpawnCharactersNextFrame()
-    {
-        yield return null; // Wait one frame otherwise they spawn disabled
-        SpawnCharacters();
     }
 
     void SpawnCharacters()
