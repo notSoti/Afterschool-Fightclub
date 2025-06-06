@@ -15,6 +15,9 @@ public class ControllerMovements : MonoBehaviour
     private UltimateAbility ultimateAbility;
     private Collider2D hitboxCollider;
 
+    private float speedBoostEndTime = -1f;
+    private float originalSpeed;
+
     void Start()
     {
         if (!gameObject.name.Contains("Player"))
@@ -142,6 +145,13 @@ public class ControllerMovements : MonoBehaviour
         {
             ultimateAbility.UseUltimate();
         }
+
+        // Check if speed boost should expire
+        if (speedBoostEndTime > 0 && Time.time >= speedBoostEndTime)
+        {
+            moveSpeed = originalSpeed;
+            speedBoostEndTime = -1f;
+        }
     }
 
     // This ensures the animations don't get weird after mid air moves
@@ -189,5 +199,12 @@ public class ControllerMovements : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        originalSpeed = moveSpeed;
+        moveSpeed *= multiplier;
+        speedBoostEndTime = Time.time + duration;
     }
 }

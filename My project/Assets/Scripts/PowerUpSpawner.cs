@@ -5,8 +5,8 @@ public class PowerUpSpawner : MonoBehaviour
     [Header("Spawn Settings")]
     public float spawnInterval = 13f;  // Fixed 13 second interval
     public float spawnChance = 0.5f;   // 50% chance to spawn
-    public float spawnHeight = 5f;
-    public float spawnWidth = 6f; // How far to the left and right of center to spawn
+    public float spawnHeight = 8f;     // Height above ground
+    public float spawnWidth = 6f;      // How far to the left and right of center to spawn
 
     [Header("Prefab Settings")]
     public GameObject powerUpPrefab;

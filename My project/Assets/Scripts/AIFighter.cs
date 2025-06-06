@@ -24,6 +24,8 @@ public class FighterAI : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool isGrounded = false;
+
+    private float speedBoostEndTime = -1f;
     private float speedMultiplier = 1f;
 
     void Start()
@@ -115,6 +117,13 @@ public class FighterAI : MonoBehaviour
         if (freeze) return;
         mainAttackTimer -= Time.deltaTime;
         kickTimer -= Time.deltaTime;
+
+        // Check if speed boost should expire
+        if (speedBoostEndTime > 0 && Time.time >= speedBoostEndTime)
+        {
+            speedMultiplier = 1f;
+            speedBoostEndTime = -1f;
+        }
 
         // Add reaction delay based on difficulty
         if (Time.time - lastDecisionTime < reactionDelay) return;
@@ -411,8 +420,9 @@ public class FighterAI : MonoBehaviour
         CancelMove();
     }
 
-    public void SetSpeedMultiplier(float multiplier)
+    public void SetSpeedMultiplier(float multiplier, float duration)
     {
         speedMultiplier = multiplier;
+        speedBoostEndTime = Time.time + duration;
     }
 }

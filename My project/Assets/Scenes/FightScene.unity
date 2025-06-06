@@ -2288,10 +2288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f2f8dbbf746dd4aa3d02ed9bcca1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 13
-  spawnChance: 0.5
+  spawnInterval: 3
+  spawnChance: 0.9
   spawnHeight: 10
-  spawnWidth: 8
+  spawnWidth: 5
   powerUpPrefab: {fileID: 158485643617085402, guid: d47fe1fa7efcae843addf8d202e7c12a, type: 3}
   healSprite: {fileID: -2059370265666210802, guid: 929c4dbf762311542ad4c2ac63750452, type: 3}
   damageSprite: {fileID: 5575118288628298238, guid: 39305b5a4160c274591273fd4b094172, type: 3}
