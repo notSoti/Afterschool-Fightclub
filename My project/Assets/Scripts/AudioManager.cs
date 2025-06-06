@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,8 @@ public class AudioManager : MonoBehaviour
     public static float SFXValue;
 
     [Header("----------- Audio Clip -----------")]
-    public AudioClip backround; //backround music, changes on each scene analoga ti ekxorisa sto AudioManager ekeinhs ths skhnhs
+    public AudioClip backround; //backround music, changes on each scene analoga ti ekxorisa sto AudioManager ekeinhs ths skhnhs   
+    public AudioClip backroundfight;
     public AudioClip hurt;
     public AudioClip death;
     public AudioClip specialbell; // notifies when special ability is available
@@ -20,9 +22,17 @@ public class AudioManager : MonoBehaviour
     public AudioClip victorysound;
     public AudioClip defeatsound;
 
-    private void Start()
+    private void Awake()
     {
-        musicSource.clip = backround; // select sound na paijei
+        if (SceneManager.GetActiveScene().name == "Fight Scene")
+        {
+            Stop();
+            musicSource.clip = backroundfight;
+        }
+        else
+        {
+            musicSource.clip = backround; // select sound na paijei
+        }
         musicSource.Play(); // play selected sound
     }
     public void TestSFX() // test hxos gia to menu
@@ -32,6 +42,9 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip) // audioclip is type object
     {
         SFXSource.PlayOneShot(clip);
+    }
+    public void Stop() {
+            musicSource.Stop();
     }
 
 }

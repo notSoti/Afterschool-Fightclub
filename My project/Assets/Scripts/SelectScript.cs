@@ -10,6 +10,7 @@ public class SelectionScript : MonoBehaviour
     public enum Character { Tsuki, Mihu };
     [Header("--------Chosen Character--------")]
     public Character player;
+    public bool isAI;
     // doesnt do anything if on difficulty object
 
     public enum Difficulty { Easy, Normal, Hard, Extreme };
@@ -39,7 +40,7 @@ public class SelectionScript : MonoBehaviour
         if (gameManager != null)
         {
             GameManager.CharacterChoice choice = (GameManager.CharacterChoice)player;
-            gameManager.SetSelectedCharacter(choice, false);
+            gameManager.SetSelectedCharacter(choice, isAI);
         }
     }
     public void SelectDifficulty()

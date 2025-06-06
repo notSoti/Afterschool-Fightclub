@@ -462,6 +462,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 190
+  audioManager: {fileID: 0}
+  endGamePanel: {fileID: 0}
+  winnerText: {fileID: 0}
   onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -483,6 +486,7 @@ MonoBehaviour:
   maxUltCharge: 100
   ultimateDamage: 20
   ultimateHealAmount: 20
+  audioManager: {fileID: 0}
   onChargeChanged:
     m_PersistentCalls:
       m_Calls: []

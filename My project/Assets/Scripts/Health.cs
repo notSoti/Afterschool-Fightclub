@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections;
 using System.Linq;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Health : MonoBehaviour
     private bool isPlayer;
     private Image healthBar;
     public GameObject endGamePanel;
+    public TMP_Text winnerText;
     private static string winner;
 
     // Cache the animation state hashes
@@ -35,6 +37,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
         isPlayer = name.Contains("Player");
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
 
         // Find the appropriate health bar based on whether this is a player or AI
@@ -197,8 +200,16 @@ public class Health : MonoBehaviour
     {
         // Wait for 3 seconds
         yield return new WaitForSeconds(3f);
-
-        audioManager.PlaySFX(audioManager.victorysound);
+        if (GetWinner() == "Player 1")
+        {
+            winnerText.text = "Player 1 Wins!";
+            audioManager.PlaySFX(audioManager.victorysound);
+        }
+        else
+        {
+            winnerText.text = "Player 2 Wins!";
+            audioManager.PlaySFX(audioManager.defeatsound);
+        }
         endGamePanel.SetActive(true);
     }
 

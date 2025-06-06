@@ -5,7 +5,7 @@ public class ReturnOrExit : MonoBehaviour
 {
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Character Selection");
     }
 
     public void ExitGame()
