@@ -28,6 +28,7 @@ public class UltimateAbility : MonoBehaviour
         currentCharge = 0f;
         isUltimateReady = false;
         isPlayer = name.Contains("Player");
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         // Find the appropriate ult bar based on whether this is a player or AI
         string barName = isPlayer ? "Player1UltBar" : "Player2UltBar";
