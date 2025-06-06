@@ -72,6 +72,6 @@ public class PowerUpSpawner : MonoBehaviour
             _ => renderer.sprite
         };
         renderer.color = Color.white;
-        powerUp.transform.localScale = new Vector3(0.3f, 0.3f, 1f);
+        powerUp.transform.localScale = new Vector3(0.20f, 0.20f, 1f);
     }
 }
