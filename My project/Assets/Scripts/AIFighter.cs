@@ -23,6 +23,7 @@ public class FighterAI : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private bool isGrounded = false;
     private float speedMultiplier = 1f;
 
     void Start()
@@ -90,6 +91,22 @@ public class FighterAI : MonoBehaviour
                 attackRange = BASE_ATTACK_RANGE * 1.3f;
                 reactionDelay = 0f;
                 break;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
         }
     }
 
@@ -216,7 +233,7 @@ public class FighterAI : MonoBehaviour
             (distance < attackRange * 1.5f && Random.value < 0.1f) || // More frequent combat jumps
             (Mathf.Abs(player.position.x - transform.position.x) < 0.8f && Random.value < 0.15f))
         { // More aggressive dodge jumps
-            if (Mathf.Abs(rb.linearVelocity.y) < 0.1f)
+            if (isGrounded)
             {
                 Jump(rb);
             }
