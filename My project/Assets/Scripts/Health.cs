@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     private bool isPlayer;
     private Image healthBar;
     public GameObject endGamePanel;
+    private static string winner;
 
     // Cache the animation state hashes
     private static readonly int IdleState = Animator.StringToHash("idle");
@@ -116,6 +117,8 @@ public class Health : MonoBehaviour
 
         if (survivor != null)
         {
+            winner = survivor.name.Contains("Player") ? "Player 1" : "Player 2";
+
             // First stop all physics movement
             if (survivor.TryGetComponent<Rigidbody2D>(out var rb))
             {
@@ -203,4 +206,5 @@ public class Health : MonoBehaviour
     public int GetCurrentHealth() => currentHealth;
     public int GetMaxHealth() => maxHealth;
     public float GetHealthPercentage() => (float)currentHealth / maxHealth;
+    public static string GetWinner() => winner;
 }
