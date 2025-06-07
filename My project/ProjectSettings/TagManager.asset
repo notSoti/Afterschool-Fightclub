@@ -8,6 +8,8 @@ TagManager:
   - Hitbox
   - Hurtbox
   - Audio
+  - WinText
+  - EndPanel
   layers:
   - Default
   - TransparentFX
