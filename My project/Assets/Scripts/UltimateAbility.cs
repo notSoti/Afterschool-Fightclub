@@ -149,8 +149,7 @@ public class UltimateAbility : MonoBehaviour
 
         onUltimateUsed?.Invoke();
 
-        // Set animator parameter
-        animator.SetBool("isUlting", true);
+        animator.SetTrigger("Ultimate");
 
         // Execute character-specific ultimate ability
         if (name.Contains("Tsuki"))
@@ -175,7 +174,6 @@ public class UltimateAbility : MonoBehaviour
         // Reset charge
         currentCharge = 0f;
         isUltimateReady = false;
-        animator.SetBool("isUlting", false);
         onChargeChanged?.Invoke(0f);
     }
 
