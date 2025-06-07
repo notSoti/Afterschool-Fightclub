@@ -130,7 +130,7 @@ public class UltimateAbility : MonoBehaviour
     {
         if (isUltimateReady) return;
 
-        currentCharge = Mathf.Min(maxUltCharge, currentCharge + (damageDealt * 2.5f));
+        currentCharge = Mathf.Clamp(currentCharge + (damageDealt * 2.5f), 0f, maxUltCharge);
 
         float chargePercentage = currentCharge / maxUltCharge;
         onChargeChanged?.Invoke(chargePercentage);
