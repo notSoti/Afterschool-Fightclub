@@ -12,11 +12,12 @@ public class FighterAI : MonoBehaviour
     private const float BASE_ATTACK_RANGE = 1.5f;
     private const float MAIN_ATTACK_COOLDOWN = 1f;
     private const float KICK_COOLDOWN = 0.7f;
+    private const float JUMP_COOLDOWN = 0.5f;
 
     private enum AIState { Idle, Chase, Attack }
 
     private float moveSpeed, jumpForce, attackRange, reactionDelay;
-    private float mainAttackTimer, kickTimer, lastDecisionTime;
+    private float mainAttackTimer, kickTimer, lastDecisionTime, jumpTimer;
     private AIState currentState;
     private UltimateAbility ultimate;
     private Animator animator;
@@ -34,6 +35,7 @@ public class FighterAI : MonoBehaviour
         animator = GetComponent<Animator>();
         currentState = AIState.Idle;
         rb = GetComponent<Rigidbody2D>();
+        jumpTimer = 0f;  // Initialize jump timer
 
         // Find and set up hitbox for attacks
         Transform hitboxTransform = transform.Find("Player Hitbox");
@@ -117,6 +119,7 @@ public class FighterAI : MonoBehaviour
         if (freeze) return;
         mainAttackTimer -= Time.deltaTime;
         kickTimer -= Time.deltaTime;
+        jumpTimer -= Time.deltaTime;
 
         // Check if speed boost should expire
         if (speedBoostEndTime > 0 && Time.time >= speedBoostEndTime)
@@ -237,14 +240,26 @@ public class FighterAI : MonoBehaviour
         animator.SetBool("isWalking", true);
         rb.freezeRotation = true;
 
-        // More aggressive jumping
-        if ((player.position.y > transform.position.y + 0.2f && distance < attackRange * 2.5f) || // Jump when player is slightly above
-            (distance < attackRange * 1.5f && Random.value < 0.1f) || // More frequent combat jumps
-            (Mathf.Abs(player.position.x - transform.position.x) < 0.8f && Random.value < 0.15f))
-        { // More aggressive dodge jumps
-            if (isGrounded)
+        // More controlled jumping behavior
+        if (isGrounded && jumpTimer <= 0f)  // Only jump if grounded and cooldown is over
+        {
+            bool shouldJump = false;
+            float jumpChance = aiDifficulty == Difficulty.Hard ? 0.08f :
+                             aiDifficulty == Difficulty.Extreme ? 0.12f : 0.05f;
+
+            if (player.position.y > transform.position.y + 0.5f && distance < attackRange * 2f)
+            {
+                shouldJump = true;  // Jump if player is significantly above
+            }
+            else if (distance < attackRange * 1.5f && Random.value < jumpChance)
+            {
+                shouldJump = true;  // Combat jumps with controlled probability
+            }
+
+            if (shouldJump)
             {
                 Jump(rb);
+                jumpTimer = JUMP_COOLDOWN;  // Set the cooldown
             }
         }
 
