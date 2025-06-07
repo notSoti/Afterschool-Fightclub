@@ -16,9 +16,13 @@ public class PowerUpEffect : MonoBehaviour
     public float speedMultiplier = 1.5f;  // For speed effects
     [SerializeField] public AudioManager audioManager;
 
+    public void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public void ApplyEffect(GameObject target)
     {
-        // audioManager.PlaySFX(audioManager.powerupring);
+        audioManager.PlaySFX(audioManager.powerupring);
         Health health = target.GetComponent<Health>();
         UltimateAbility ultimate = target.GetComponent<UltimateAbility>();
         ControllerMovements movement = target.GetComponent<ControllerMovements>();
