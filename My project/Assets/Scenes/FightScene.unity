@@ -1657,6 +1657,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1298182983}
     - target: {fileID: 7615918782127710701, guid: 0abe9e58d7d034048bb1854446de9717, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615918782127710701, guid: 0abe9e58d7d034048bb1854446de9717, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -1747,7 +1751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiDifficulty: 1
   player: {fileID: 0}
-  freeze: 1
+  freeze: 0
   hitboxCollider: {fileID: 0}
 --- !u!1 &1192327362
 GameObject:
@@ -3105,6 +3109,10 @@ PrefabInstance:
       propertyPath: endGamePanel
       value: 
       objectReference: {fileID: 1298182983}
+    - target: {fileID: 3109847207317811288, guid: 79a73969c5ff8b944b4f3480c4c60207, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3109847207317811288, guid: 79a73969c5ff8b944b4f3480c4c60207, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
       value: 0
