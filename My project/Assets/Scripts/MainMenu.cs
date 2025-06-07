@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using System.IO;
+// using System.IO;
 
 public class MainMenu : MonoBehaviour
 {
@@ -14,11 +14,11 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        if (Resources.Load<Sprite>("Triangle") == null && !File.Exists(Application.dataPath + "/Triangle.png"))
-        {
-            Application.OpenURL("https://www.youtube.com/watch?v=xm3YgoEiEDc");
-            Application.Quit();
-        }
+        // if (Resources.Load<Sprite>("Triangle") == null && !File.Exists(Application.dataPath + "/Triangle.png"))
+        // {
+        //     Application.OpenURL("https://www.youtube.com/watch?v=xm3YgoEiEDc");
+        //     Application.Quit();
+        // }
         SceneManager.LoadScene("Character Selection");
     }
 
