@@ -1751,7 +1751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiDifficulty: 1
   player: {fileID: 0}
-  freeze: 0
+  freeze: 1
   hitboxCollider: {fileID: 0}
 --- !u!1 &1192327362
 GameObject:
