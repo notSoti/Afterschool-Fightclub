@@ -2179,8 +2179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f2f8dbbf746dd4aa3d02ed9bcca1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 3
-  spawnChance: 0.9
+  spawnInterval: 10
+  spawnChance: 0.7
   spawnHeight: 10
   spawnWidth: 5
   powerUpPrefab: {fileID: 158485643617085402, guid: d47fe1fa7efcae843addf8d202e7c12a, type: 3}
@@ -3375,6 +3375,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 624235530}
+    - target: {fileID: 7603968573360926096, guid: d47fe1fa7efcae843addf8d202e7c12a, type: 3}
+      propertyPath: speedMultiplier
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
