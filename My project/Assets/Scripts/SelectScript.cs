@@ -17,6 +17,10 @@ public class SelectionScript : MonoBehaviour
     [Header("---------Bot Difficulty---------")]
     public Difficulty botdifficulty;
     // doesnt do anything if on player object
+    public enum Map { Map1, Map2 };
+    [Header("--------Chosen Map--------")]
+    public Map map;
+
     [SerializeField]
     private TMP_Text difftext;
 
@@ -49,6 +53,14 @@ public class SelectionScript : MonoBehaviour
         {
             FighterAI.Difficulty aiFifficulty = (FighterAI.Difficulty)botdifficulty;
             gameManager.SetAIDifficulty(aiFifficulty);
+        }
+    }
+    public void SelectMap()
+    {
+        if (gameManager != null)
+        {
+            GameManager.MapChoice mapChoice = (GameManager.MapChoice)map;
+            gameManager.SetSelectedMap(mapChoice);
         }
     }
 
@@ -98,4 +110,15 @@ public class SelectionScript : MonoBehaviour
         SelectCharacter();
     }
 
+    // --- Map options ---
+    public void SelectMap1()
+    {
+        map = Map.Map1;
+        SelectMap();
+    }
+    public void SelectMap2()
+    {
+        map = Map.Map2;
+        SelectMap();
+    }
 }

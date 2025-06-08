@@ -706,6 +706,7 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
+  map: 0
   difftext: {fileID: 0}
 --- !u!1 &170401491
 GameObject:
@@ -769,7 +770,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 170401493}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1781836901}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1289914189}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1601114137}
+        m_TargetAssemblyTypeName: SelectionScript, Assembly-CSharp
+        m_MethodName: SelectMap1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &170401493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,6 +1418,7 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
+  map: 0
   difftext: {fileID: 0}
 --- !u!1 &378277058
 GameObject:
@@ -1519,7 +1557,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 383746727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1289914189}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1781836901}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1601114137}
+        m_TargetAssemblyTypeName: SelectionScript, Assembly-CSharp
+        m_MethodName: SelectMap2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &383746727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1804,6 +1878,7 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
+  map: 0
   difftext: {fileID: 518570962}
 --- !u!1 &591124161
 GameObject:
@@ -4645,6 +4720,7 @@ GameObject:
   - component: {fileID: 1601114134}
   - component: {fileID: 1601114136}
   - component: {fileID: 1601114135}
+  - component: {fileID: 1601114137}
   m_Layer: 5
   m_Name: MapSelection
   m_TagString: Untagged
@@ -4712,6 +4788,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601114133}
   m_CullTransparentMesh: 1
+--- !u!114 &1601114137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601114133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2a2f389eadc1e4f9d62f58b30c1782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
+  isAI: 0
+  botdifficulty: 0
+  map: 0
+  difftext: {fileID: 0}
 --- !u!1 &1613262228
 GameObject:
   m_ObjectHideFlags: 0
@@ -4935,6 +5028,7 @@ MonoBehaviour:
   player: 0
   isAI: 1
   botdifficulty: 0
+  map: 0
   difftext: {fileID: 0}
 --- !u!1 &1658858871
 GameObject:
@@ -5221,6 +5315,7 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
+  map: 0
   difftext: {fileID: 0}
 --- !u!1 &1729314348
 GameObject:

@@ -209,8 +209,9 @@ GameObject:
   - component: {fileID: 56460673}
   - component: {fileID: 56460675}
   - component: {fileID: 56460676}
+  - component: {fileID: 56460677}
   m_Layer: 3
-  m_Name: background1
+  m_Name: Backround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,6 +355,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &56460677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56460672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0974bbd01aac4134b9639ba223f547f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  spriteArray:
+  - {fileID: 2765114710641518886, guid: c82e0dcaa6a2b644e9a10c4ea71c1fb8, type: 3}
+  - {fileID: 8736167201058482913, guid: 02a098e26874bef4d833e76092b724e2, type: 3}
+  map: 1
 --- !u!1 &130152529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,7 +2072,7 @@ GameObject:
   - component: {fileID: 1316768515}
   - component: {fileID: 1316768517}
   m_Layer: 5
-  m_Name: IconBR
+  m_Name: IconBRAI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2963,7 +2981,7 @@ GameObject:
   - component: {fileID: 1976005323}
   - component: {fileID: 1976005325}
   m_Layer: 5
-  m_Name: IconBR
+  m_Name: IconBRP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

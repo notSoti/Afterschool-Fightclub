@@ -10,6 +10,7 @@ TagManager:
   - Audio
   - WinText
   - EndPanel
+  - Backround
   layers:
   - Default
   - TransparentFX

@@ -12,10 +12,17 @@ public class GameManager : MonoBehaviour
         Tsuki,
         Mihu
     }
+    public enum MapChoice
+    {
+        Map1,
+        Map2
+    }
 
     [Header("Character Selection")]
     public CharacterChoice selectedPlayerCharacter = CharacterChoice.Tsuki;
     public CharacterChoice selectedAICharacter = CharacterChoice.Mihu;
+    [Header("Map Selection")]
+    public MapChoice selectedMap;
 
     [Header("Character Prefabs")]
     public GameObject[] characterPrefabs; // Element 0 = Tsuki, Element 1 = Mihu
@@ -94,6 +101,7 @@ public class GameManager : MonoBehaviour
             selectedPlayerCharacter = (CharacterChoice)Random.Range(0, 2);
             selectedAICharacter = (CharacterChoice)Random.Range(0, 2);
             aiDifficulty = FighterAI.Difficulty.Normal;
+            selectedMap = MapChoice.Map1;
         }
     }
 
@@ -112,6 +120,10 @@ public class GameManager : MonoBehaviour
     public void SetAIDifficulty(FighterAI.Difficulty difficulty)
     {
         aiDifficulty = difficulty;
+    }
+    public void SetSelectedMap(MapChoice map)
+    {
+        selectedMap = map;
     }
 
     private void DisableOriginalCharacters()
