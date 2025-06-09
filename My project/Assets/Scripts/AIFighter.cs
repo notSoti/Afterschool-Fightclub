@@ -134,18 +134,10 @@ public class FighterAI : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.position);
 
-        // Try to use ultimate more aggressively
+        // Use ultimate when ready
         if (ultimate != null && ultimate.IsUltimateReady())
         {
-            float ultimateRange = aiDifficulty == Difficulty.Extreme ? attackRange * 1.5f :
-                                aiDifficulty == Difficulty.Hard ? attackRange * 1.3f :
-                                aiDifficulty == Difficulty.Normal ? attackRange * 1.1f :
-                                attackRange * 0.9f;
-
-            if (distance <= ultimateRange)
-            {
-                UseUltimate();
-            }
+            UseUltimate();
         }
 
         // Check if we should try to escape before anything else
