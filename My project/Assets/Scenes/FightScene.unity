@@ -1608,11 +1608,11 @@ PrefabInstance:
       objectReference: {fileID: 624235530}
     - target: {fileID: 5418374594895761090, guid: 0abe9e58d7d034048bb1854446de9717, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.4043
+      value: -1.52
       objectReference: {fileID: 0}
     - target: {fileID: 5418374594895761090, guid: 0abe9e58d7d034048bb1854446de9717, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.35
+      value: -1.34
       objectReference: {fileID: 0}
     - target: {fileID: 5418374594895761090, guid: 0abe9e58d7d034048bb1854446de9717, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1728,7 +1728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9007265834048255607, guid: 0abe9e58d7d034048bb1854446de9717, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2175,7 +2175,7 @@ MonoBehaviour:
   damageSprite: {fileID: 5575118288628298238, guid: 39305b5a4160c274591273fd4b094172, type: 3}
   ultChargeSprite: {fileID: -1618796340548446216, guid: 4b274ad4ea52bfc4f880d973485d4561, type: 3}
   ultDrainSprite: {fileID: 2649257032563600808, guid: 8d316b9033fc0e84f85a63905d8fecd6, type: 3}
-  speedBoostSprite: {fileID: -1265809738979358695, guid: c203e3d0bcfcf9a4583e80676ad819eb, type: 3}
+  speedBoostSprite: {fileID: -9125240465958113121, guid: f44821e0dc6b93e419ea36acf59b5738, type: 3}
 --- !u!4 &1322615555
 Transform:
   m_ObjectHideFlags: 0
@@ -3108,7 +3108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5847910595390957194, guid: 79a73969c5ff8b944b4f3480c4c60207, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
