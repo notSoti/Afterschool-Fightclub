@@ -11,6 +11,8 @@ TagManager:
   - WinText
   - EndPanel
   - Backround
+  - IconPlayer
+  - IconAI
   layers:
   - Default
   - TransparentFX

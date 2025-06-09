@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     // Singleton instance
     public static GameManager Instance { get; private set; }
-
+    
     public enum CharacterChoice
     {
         Tsuki,
@@ -21,8 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("Character Selection")]
     public CharacterChoice selectedPlayerCharacter = CharacterChoice.Tsuki;
     public CharacterChoice selectedAICharacter = CharacterChoice.Mihu;
-    [Header("Map Selection")]
-    public MapChoice selectedMap;
+    public MapChoice selectedMap = MapChoice.Map2;
 
     [Header("Character Prefabs")]
     public GameObject[] characterPrefabs; // Element 0 = Tsuki, Element 1 = Mihu
@@ -36,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Camera")]
     public CameraTarget cameraTarget; // Assign this in inspector
-
+    private InFightUIScript infightuiscript;
     void Awake()
     {
         if (Instance == null)

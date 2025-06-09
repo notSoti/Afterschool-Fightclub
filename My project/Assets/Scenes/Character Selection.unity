@@ -4561,6 +4561,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6690430844858082005, guid: 53d36f814b9e997429f126546be46ce8, type: 3}
+      propertyPath: selectedMap
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690430844858082005, guid: 53d36f814b9e997429f126546be46ce8, type: 3}
       propertyPath: 'characterPrefabs.Array.data[0]'
       value: 
       objectReference: {fileID: 9007265834048255607, guid: 0abe9e58d7d034048bb1854446de9717, type: 3}
@@ -4803,7 +4807,7 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
-  map: 0
+  map: 1
   difftext: {fileID: 0}
 --- !u!1 &1613262228
 GameObject:

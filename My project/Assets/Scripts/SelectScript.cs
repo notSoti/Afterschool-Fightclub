@@ -19,7 +19,7 @@ public class SelectionScript : MonoBehaviour
     // doesnt do anything if on player object
     public enum Map { Map1, Map2 };
     [Header("--------Chosen Map--------")]
-    public Map map;
+    public static Map map;
 
     [SerializeField]
     private TMP_Text difftext;
