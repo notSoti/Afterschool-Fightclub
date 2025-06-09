@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
-    public SpriteRenderer background; // Assign your background image here
+    public SpriteRenderer background;
 
     public float smoothSpeed = 5f;
     public float orthographicSize = 3f; // Smaller value = smaller view
