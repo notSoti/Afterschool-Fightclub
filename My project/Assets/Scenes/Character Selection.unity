@@ -706,7 +706,6 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
-  map: 0
   difftext: {fileID: 0}
 --- !u!1 &170401491
 GameObject:
@@ -1418,7 +1417,6 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
-  map: 0
   difftext: {fileID: 0}
 --- !u!1 &378277058
 GameObject:
@@ -1878,7 +1876,6 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
-  map: 0
   difftext: {fileID: 518570962}
 --- !u!1 &591124161
 GameObject:
@@ -2643,7 +2640,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.16
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4807,7 +4804,6 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
-  map: 1
   difftext: {fileID: 0}
 --- !u!1 &1613262228
 GameObject:
@@ -5032,7 +5028,6 @@ MonoBehaviour:
   player: 0
   isAI: 1
   botdifficulty: 0
-  map: 0
   difftext: {fileID: 0}
 --- !u!1 &1658858871
 GameObject:
@@ -5319,7 +5314,6 @@ MonoBehaviour:
   player: 0
   isAI: 0
   botdifficulty: 0
-  map: 0
   difftext: {fileID: 0}
 --- !u!1 &1729314348
 GameObject:
