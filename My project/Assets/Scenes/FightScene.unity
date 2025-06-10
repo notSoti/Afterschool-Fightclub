@@ -3339,6 +3339,14 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7603968573360926096, guid: d47fe1fa7efcae843addf8d202e7c12a, type: 3}
+      propertyPath: type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603968573360926096, guid: d47fe1fa7efcae843addf8d202e7c12a, type: 3}
+      propertyPath: duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603968573360926096, guid: d47fe1fa7efcae843addf8d202e7c12a, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 624235530}

@@ -53,25 +53,46 @@ public class PowerUpSpawner : MonoBehaviour
         float xPos = Random.Range(-spawnWidth, spawnWidth);
         Vector3 spawnPos = transform.position + new Vector3(xPos, spawnHeight, 0);
 
-        // Create the power-up
+        // create the powerup
         GameObject powerUp = Instantiate(powerUpPrefab, spawnPos, Quaternion.identity);
+        powerUp.SetActive(false);
 
         PowerUpEffect effect = powerUp.GetComponent<PowerUpEffect>();
-        SpriteRenderer renderer = powerUp.GetComponent<SpriteRenderer>();
 
-        PowerUpEffect.PowerUpType type = (PowerUpEffect.PowerUpType)Random.Range(0, 6);
+        if (!powerUp.TryGetComponent<SpriteRenderer>(out var renderer))
+        {
+            Destroy(powerUp);
+            return;
+        }
+
+        // Set the power-up type and corresponding sprite
+        PowerUpEffect.PowerUpType type = (PowerUpEffect.PowerUpType)Random.Range(0, 5);
         effect.type = type;
 
-        renderer.sprite = type switch
+        // Get the appropriate sprite
+        Sprite selectedSprite = type switch
         {
             PowerUpEffect.PowerUpType.Heal => healSprite,
             PowerUpEffect.PowerUpType.Damage => damageSprite,
             PowerUpEffect.PowerUpType.UltCharge => ultChargeSprite,
             PowerUpEffect.PowerUpType.UltDrain => ultDrainSprite,
             PowerUpEffect.PowerUpType.SpeedBoost => speedBoostSprite,
-            _ => renderer.sprite
+            _ => healSprite // Default to heal sprite
         };
-        renderer.color = Color.white;
+
+        if (powerUp.TryGetComponent<PowerUp>(out var powerUpComponent))
+        {
+            powerUpComponent.InitializeSprite(selectedSprite);
+        }
+
         powerUp.transform.localScale = new Vector3(0.20f, 0.20f, 1f);
+
+        powerUp.SetActive(true);
+
+        if (renderer.sprite == null)
+        {
+            renderer.sprite = selectedSprite;
+            renderer.enabled = true;
+        }
     }
 }

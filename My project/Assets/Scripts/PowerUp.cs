@@ -3,29 +3,66 @@ using UnityEngine;
 [RequireComponent(typeof(PowerUpEffect))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PowerUp : MonoBehaviour
 {
     private PowerUpEffect effect;
-    private readonly float lifetime = 10f; // How long the power-up exists before disappearing
-    private readonly float flashingThreshold = 3f; // When to start flashing before disappearing
+    private readonly float lifetime = 10f;
+    private readonly float flashingThreshold = 3f;
     private SpriteRenderer spriteRenderer;
     private float timer = 0f;
     private bool isFlashing = false;
     private CircleCollider2D physicsCollider;
     private CircleCollider2D triggerCollider;
     private bool hasLanded = false;
+    private Sprite initialSprite;
+    private bool hasInitialized = false;
+
+    public void InitializeSprite(Sprite sprite)
+    {
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        if (spriteRenderer != null && sprite != null)
+        {
+            initialSprite = sprite;
+            spriteRenderer.sprite = sprite;
+            spriteRenderer.enabled = true;
+            spriteRenderer.sortingLayerName = "Default";
+            spriteRenderer.sortingOrder = 1;
+            spriteRenderer.color = Color.white;
+            hasInitialized = true;
+        }
+    }
+
+    void Awake()
+    {
+        // get the components early to avoid potential race conditions
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        effect = GetComponent<PowerUpEffect>();
+    }
 
     void Start()
     {
-        effect = GetComponent<PowerUpEffect>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!hasInitialized)
+        {
+            if (initialSprite != null)
+            {
+                InitializeSprite(initialSprite);
+            }
+        }
 
-        // Set up the physical collider for ground collision
+        SetupPhysics();
+    }
+
+    void SetupPhysics()
+    {
         physicsCollider = gameObject.AddComponent<CircleCollider2D>();
         physicsCollider.isTrigger = false;
         physicsCollider.radius = 0.25f;
 
-        // Create a bouncy material for the collider
         var bouncyMaterial = new PhysicsMaterial2D("PowerUpBounce")
         {
             bounciness = 0.2f,
@@ -33,41 +70,39 @@ public class PowerUp : MonoBehaviour
         };
         physicsCollider.sharedMaterial = bouncyMaterial;
 
-        // Add a trigger collider for player interaction (initially disabled)
         triggerCollider = gameObject.AddComponent<CircleCollider2D>();
         triggerCollider.isTrigger = true;
         triggerCollider.radius = 0.5f;
-        triggerCollider.enabled = false; // Start disabled until landing
+        triggerCollider.enabled = false;
 
-        // Set up the rigidbody with stable properties
         var rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 1.2f;
         rb.mass = 0.5f;
         rb.linearDamping = 0.5f;
         rb.angularDamping = 0.1f;
-        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;  // smooth movement
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
-        // Make power-ups pass through each other and players (until landed)
         gameObject.layer = LayerMask.NameToLayer("PowerUps");
         var powerUpsLayer = gameObject.layer;
-        Physics2D.IgnoreLayerCollision(powerUpsLayer, powerUpsLayer); // Only ignore collisions between power-ups
-        Physics2D.IgnoreLayerCollision(powerUpsLayer, LayerMask.NameToLayer("Player")); // Ignore players while falling
+        Physics2D.IgnoreLayerCollision(powerUpsLayer, powerUpsLayer);
+        Physics2D.IgnoreLayerCollision(powerUpsLayer, LayerMask.NameToLayer("Player"));
     }
 
     void Update()
     {
+        // skip update if not properly initialized
+        if (!hasInitialized || spriteRenderer == null) return;
+
         timer += Time.deltaTime;
 
-        // Start flashing when near the end of lifetime
         if (timer >= lifetime - flashingThreshold && !isFlashing)
         {
             isFlashing = true;
             InvokeRepeating(nameof(ToggleVisibility), 0f, 0.2f);
         }
 
-        // Destroy when lifetime is up
         if (timer >= lifetime)
         {
             Destroy(gameObject);
@@ -76,9 +111,24 @@ public class PowerUp : MonoBehaviour
 
     void ToggleVisibility()
     {
-        if (spriteRenderer != null)
+        if (spriteRenderer == null || !hasInitialized) return;
+
+        if (spriteRenderer.sprite == null && initialSprite != null)
+        {
+            // try to recover the sprite
+            spriteRenderer.sprite = initialSprite;
+            spriteRenderer.enabled = true;
+        }
+        else if (spriteRenderer.sprite != null)
         {
             spriteRenderer.enabled = !spriteRenderer.enabled;
+        }
+        else
+        {
+            // sprite is missing
+            CancelInvoke(nameof(ToggleVisibility));
+            isFlashing = false;
+            spriteRenderer.enabled = true;
         }
     }
 
@@ -89,25 +139,23 @@ public class PowerUp : MonoBehaviour
             hasLanded = true;
             triggerCollider.enabled = true;
 
-            // Get the collision point and place the power-up on top of the ground
+            // get proper positioning
             ContactPoint2D contact = collision.GetContact(0);
             Vector2 groundNormal = contact.normal;
             Vector2 landingPoint = contact.point;
 
-            // Calculate offset based on whether we hit the top or bottom of the ground
-            float offsetMultiplier = groundNormal.y > 0 ? 1f : 2f; // Use larger offset if hitting from below
+            // adjust position based on ground normal direction
+            float offsetMultiplier = groundNormal.y > 0 ? 1f : 2f;
             float objectRadius = physicsCollider.radius;
-            float offset = objectRadius * offsetMultiplier + 0.5f; // Add extra fixed offset
+            float offset = objectRadius * offsetMultiplier + 0.5f;
 
-            // Move the power-up above the ground
+            // position the powerup slightly above the ground
             transform.position = new Vector3(transform.position.x, landingPoint.y + offset, transform.position.z);
 
-            // Switch to kinematic mode to prevent further physics interactions
             var rb = GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Kinematic;
             rb.linearVelocity = Vector2.zero;
 
-            // Re-enable collisions with players after landing
             Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Player"), false);
         }
     }
