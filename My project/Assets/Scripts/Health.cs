@@ -15,8 +15,7 @@ public class Health : MonoBehaviour
     private bool isDead;
     private bool isPlayer;
     private Image healthBar;
-    public GameObject endGamePanel;
-    public TMP_Text winnerText;
+    public EndPanelScript endGamePanel;
     private static string winner;
 
     // Cache the animation state hashes
@@ -198,22 +197,12 @@ public class Health : MonoBehaviour
     }
 
     private IEnumerator LoadVictoryScreen()
-    {   
-        
+    {
+
         // Wait for 3 seconds
         yield return new WaitForSeconds(3f);
-        GameObject.FindGameObjectWithTag("EndPanel").transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
-        winnerText = GameObject.FindGameObjectWithTag("WinText").GetComponent<TextMeshProUGUI>();
-        if (GetWinner() == "Player 1")
-        {
-            winnerText.text = "Player 1 Wins!";
-            audioManager.PlaySFX(audioManager.victorysound);
-        }
-        else
-        {
-            winnerText.text = "Player 2 Wins!";
-            audioManager.PlaySFX(audioManager.defeatsound);
-        }
+        endGamePanel = GameObject.FindGameObjectWithTag("EndPanel").GetComponent<EndPanelScript>();
+        endGamePanel.BringPanel(winner);
     }
 
     public bool IsDead() => isDead;
