@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 public class MainMenu : MonoBehaviour
 {
 
-    public GameObject mainMenu, optionsMenu, controlsPanel;
+    public GameObject mainMenu, optionsMenu, controlsPanel, controlPanelKeys, controlPanelPowerups;
 
-    public GameObject optionsFirstButton, optionsClosedButton, controlsFirstButton, controlsClosedButton;
+    public GameObject optionsFirstButton, optionsClosedButton, controlsFirstButton, controlsClosedButton, controlsRightButton, controlsLeftButton;
 
 
     public void PlayGame()
@@ -52,6 +52,25 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null); //unselect previous object
         EventSystem.current.SetSelectedGameObject(controlsClosedButton);
+    }
+
+    public void ControlsRight()
+    {
+        controlPanelKeys.SetActive(false);
+        controlPanelPowerups.SetActive(true);
+        controlsLeftButton.SetActive(true);
+        controlsRightButton.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null); //unselect previous object
+        EventSystem.current.SetSelectedGameObject(controlsLeftButton);
+    }
+    public void ControlsLeft()
+    {
+        controlPanelPowerups.SetActive(false);
+        controlPanelKeys.SetActive(true);
+        controlsRightButton.SetActive(true);
+        controlsLeftButton.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null); //unselect previous object
+        EventSystem.current.SetSelectedGameObject(controlsRightButton);
     }
 
     public void QuitGame()
